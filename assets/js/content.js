@@ -26,7 +26,7 @@ window.CONTENT = {
     hero: {
       eyebrow: "Màrqueting digital estratègic",
       title: "Converteixo dades en <em>decisions</em> que fan créixer el negoci.",
-      lead: "Sóc l'Andrés Roldán, Responsable de Màrqueting Digital a Tecnotrip. Des de dins de l'empresa, porto l'estratègia, l'analítica, l'email marketing, els continguts i el funnel de conversió.",
+      lead: "Sóc l'Andrés Roldán, Responsable de Màrqueting Digital. Estratègia, analítica, email marketing, continguts i funnel de conversió en entorns B2B i B2C.",
       ctaPortfolio: "Veure portafoli",
       ctaContact: "Contacte",
       photoAlt: "Espai reservat per a la foto de l'Andrés Roldán",
@@ -172,7 +172,7 @@ window.CONTENT = {
     hero: {
       eyebrow: "Marketing digital estratégico",
       title: "Convierto datos en <em>decisiones</em> que hacen crecer el negocio.",
-      lead: "Soy Andrés Roldán, Responsable de Marketing Digital en Tecnotrip. Desde dentro de la empresa, llevo la estrategia, la analítica, el email marketing, los contenidos y el funnel de conversión.",
+      lead: "Soy Andrés Roldán, Responsable de Marketing Digital. Estrategia, analítica, email marketing, contenidos y funnel de conversión en entornos B2B y B2C.",
       ctaPortfolio: "Ver portafolio",
       ctaContact: "Contacto",
       photoAlt: "Espacio reservado para la foto de Andrés Roldán",
@@ -318,7 +318,7 @@ window.CONTENT = {
     hero: {
       eyebrow: "Strategic digital marketing",
       title: "I turn data into <em>decisions</em> that grow the business.",
-      lead: "I'm Andrés Roldán, Digital Marketing Manager at Tecnotrip. Working in-house, I run strategy, analytics, email marketing, content and the conversion funnel.",
+      lead: "I'm Andrés Roldán, Digital Marketing Manager. Strategy, analytics, email marketing, content and conversion funnels across B2B and B2C.",
       ctaPortfolio: "See portfolio",
       ctaContact: "Contact",
       photoAlt: "Placeholder for Andrés Roldán's photo",
