@@ -26,9 +26,9 @@ window.CONTENT = {
     hero: {
       eyebrow: "Màrqueting digital estratègic",
       title: "Converteixo dades en <em>decisions</em> que fan créixer el negoci.",
-      lead: "Sóc l'Andrés Roldán, Responsable de Màrqueting Digital. Estratègia, analítica, email marketing, continguts i funnel de conversió en entorns B2B i B2C.",
+      lead: "Sóc l'Andrés Roldán, Responsable de Màrqueting Digital a Tecnotrip. Des de dins de l'empresa, porto l'estratègia, l'analítica, l'email marketing, els continguts i el funnel de conversió.",
       ctaPortfolio: "Veure portafoli",
-      ctaContact: "Parlem",
+      ctaContact: "Contacte",
       photoAlt: "Espai reservat per a la foto de l'Andrés Roldán",
       photoPending: "Foto properament",
       float1: "Data-driven",
@@ -127,13 +127,13 @@ window.CONTENT = {
     },
     portfolio: {
       kicker: "Portafoli",
-      title: "Casos i campanyes",
-      intro: "Una selecció de projectes: el repte, què vaig fer i com ho vaig mesurar.",
+      title: "Projectes destacats",
+      intro: "Alguns dels projectes en què he treballat a les empreses on he estat: el repte, què vaig fer i com es va mesurar.",
       filtersLabel: "Filtrar projectes",
       all: "Tots",
-      viewCase: "Veure el cas",
+      viewCase: "Veure el projecte",
       sample: "Mètriques d'exemple",
-      sampleNote: "Les xifres d'aquest cas són il·lustratives i estan pendents de substituir per dades reals.",
+      sampleNote: "Les xifres d'aquest projecte són il·lustratives i estan pendents de substituir per dades reals.",
       context: "Context",
       challenge: "Repte",
       actions: "Què vaig fer",
@@ -144,8 +144,8 @@ window.CONTENT = {
     },
     contact: {
       kicker: "Contacte",
-      title: "Parlem del teu proper projecte?",
-      text: "Estic obert a noves oportunitats i col·laboracions en màrqueting digital estratègic. Escriu-me i et respondré ben aviat.",
+      title: "Connectem?",
+      text: "Si vols parlar de màrqueting digital o contactar amb mi per qualsevol motiu professional, escriu-me o connecta amb mi a LinkedIn.",
       email: "Escriu-me"
     }
   },
@@ -172,9 +172,9 @@ window.CONTENT = {
     hero: {
       eyebrow: "Marketing digital estratégico",
       title: "Convierto datos en <em>decisiones</em> que hacen crecer el negocio.",
-      lead: "Soy Andrés Roldán, Responsable de Marketing Digital. Estrategia, analítica, email marketing, contenidos y funnel de conversión en entornos B2B y B2C.",
+      lead: "Soy Andrés Roldán, Responsable de Marketing Digital en Tecnotrip. Desde dentro de la empresa, llevo la estrategia, la analítica, el email marketing, los contenidos y el funnel de conversión.",
       ctaPortfolio: "Ver portafolio",
-      ctaContact: "Hablemos",
+      ctaContact: "Contacto",
       photoAlt: "Espacio reservado para la foto de Andrés Roldán",
       photoPending: "Foto próximamente",
       float1: "Data-driven",
@@ -273,13 +273,13 @@ window.CONTENT = {
     },
     portfolio: {
       kicker: "Portafolio",
-      title: "Casos y campañas",
-      intro: "Una selección de proyectos: el reto, qué hice y cómo lo medí.",
+      title: "Proyectos destacados",
+      intro: "Algunos de los proyectos en los que he trabajado en las empresas donde he estado: el reto, qué hice y cómo se midió.",
       filtersLabel: "Filtrar proyectos",
       all: "Todos",
-      viewCase: "Ver el caso",
+      viewCase: "Ver el proyecto",
       sample: "Métricas de ejemplo",
-      sampleNote: "Las cifras de este caso son ilustrativas y están pendientes de sustituir por datos reales.",
+      sampleNote: "Las cifras de este proyecto son ilustrativas y están pendientes de sustituir por datos reales.",
       context: "Contexto",
       challenge: "Reto",
       actions: "Qué hice",
@@ -290,8 +290,8 @@ window.CONTENT = {
     },
     contact: {
       kicker: "Contacto",
-      title: "¿Hablamos de tu próximo proyecto?",
-      text: "Estoy abierto a nuevas oportunidades y colaboraciones en marketing digital estratégico. Escríbeme y te responderé muy pronto.",
+      title: "¿Conectamos?",
+      text: "Si quieres hablar de marketing digital o contactar conmigo por cualquier motivo profesional, escríbeme o conecta conmigo en LinkedIn.",
       email: "Escríbeme"
     }
   },
@@ -318,9 +318,9 @@ window.CONTENT = {
     hero: {
       eyebrow: "Strategic digital marketing",
       title: "I turn data into <em>decisions</em> that grow the business.",
-      lead: "I'm Andrés Roldán, Digital Marketing Manager. Strategy, analytics, email marketing, content and conversion funnels across B2B and B2C.",
+      lead: "I'm Andrés Roldán, Digital Marketing Manager at Tecnotrip. Working in-house, I run strategy, analytics, email marketing, content and the conversion funnel.",
       ctaPortfolio: "See portfolio",
-      ctaContact: "Let's talk",
+      ctaContact: "Contact",
       photoAlt: "Placeholder for Andrés Roldán's photo",
       photoPending: "Photo coming soon",
       float1: "Data-driven",
@@ -419,13 +419,13 @@ window.CONTENT = {
     },
     portfolio: {
       kicker: "Portfolio",
-      title: "Cases & campaigns",
-      intro: "A selection of projects: the challenge, what I did and how I measured it.",
+      title: "Featured projects",
+      intro: "Some of the projects I've worked on at the companies I've been part of: the challenge, what I did and how it was measured.",
       filtersLabel: "Filter projects",
       all: "All",
-      viewCase: "View case",
+      viewCase: "View project",
       sample: "Sample metrics",
-      sampleNote: "The figures in this case are illustrative and still need to be replaced with real data.",
+      sampleNote: "The figures in this project are illustrative and still need to be replaced with real data.",
       context: "Context",
       challenge: "Challenge",
       actions: "What I did",
@@ -436,8 +436,8 @@ window.CONTENT = {
     },
     contact: {
       kicker: "Contact",
-      title: "Shall we talk about your next project?",
-      text: "I'm open to new opportunities and collaborations in strategic digital marketing. Drop me a line and I'll get back to you soon.",
+      title: "Let's connect",
+      text: "If you'd like to talk about digital marketing or get in touch for any professional reason, email me or connect with me on LinkedIn.",
       email: "Email me"
     }
   }
