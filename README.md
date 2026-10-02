@@ -7,30 +7,42 @@ HTML, CSS i JavaScript sense dependències ni procés de build. Està pensada pe
 
 ```
 .
-├── index.html               # Pàgina única (hero, sobre mi, experiència, competències, portafoli, contacte)
+├── index.html               # One-page: inici, sobre mi, experiència, projectes, competències, contacte
+├── casos/                   # Una pàgina per cas d'estudi (mateix layout)
+│   └── seo-geo-ga4.html
 ├── 404.html                 # Pàgina d'error
 ├── .nojekyll                # Serveix els fitxers tal qual (sense Jekyll)
 ├── assets/
 │   ├── css/styles.css       # Estils (colors a :root)
-│   ├── js/content.js        # Tots els textos en CA / ES / EN
-│   ├── js/main.js           # Idiomes, menú mòbil, renderitzat del CV, animacions
-│   ├── js/portfolio.js      # Filtres, targetes i fitxa de detall del portafoli
+│   ├── js/content.js        # Textos de la web en CA / ES / EN
+│   ├── js/main.js           # Idiomes, menú mòbil, CV, animacions
+│   ├── js/cases-data.js     # Carrega data/casos.json
+│   ├── js/projects-hub.js   # Targetes de "Projectes" a la one-page
+│   ├── js/case.js           # Plantilla de la pàgina de cas
 │   ├── docs/                # CV en PDF descarregable
-│   └── img/                 # Favicon, foto personal i portades de projectes
-└── data/projects.js         # Dades del portafoli (aquí s'afegeixen campanyes noves)
+│   └── img/                 # Favicon, foto personal i imatges de projectes
+└── data/casos.json          # Contingut dels casos d'estudi
 ```
 
-## Afegir una campanya al portafoli
+## Casos de estudio (`data/casos.json`)
 
-1. Obre `data/projects.js`.
-2. Copia un bloc `{ ... }` sencer i enganxa'l dins la llista.
-3. Canvia l'`id` i omple els textos en `ca`, `es` i `en`.
-4. Posa `sample: false` quan les mètriques siguin reals.
-5. Opcional: afegeix una imatge a `assets/img/projects/` i indica-la a `cover: { image: "assets/img/projects/nom.webp" }`.
+Todo el contenido de los casos está en `data/casos.json`; para rellenar KPIs solo se edita texto.
 
-Els filtres es generen sols a partir de les categories que facis servir (`strategy`, `analytics`, `email`, `events`, `paid`, `content`).
+- `null` se muestra como **[PENDIENTE]** y `"measuring"` como **En medición** (en el idioma activo).
+- `status`: `audit_done` (Auditoría completada), `in_progress` (En ejecución) o `measured` (Resultados medidos).
+- `published: false`: la tarjeta aparece como "Caso en preparación", sin enlace ni enlace desde el CV.
+- `cv.bullet`: posición (empezando en 0) del logro de Tecnotrip en el CV que enlaza con el caso.
+- Los textos van en `{ "es", "ca", "en" }`.
 
-> ⚠️ Les mètriques dels 3 casos inclosos són **d'exemple**. Substitueix-les per dades reals abans de difondre la web.
+**Publicar un caso nuevo:** copia `casos/seo-geo-ga4.html` como `casos/<id>.html`, cambia `data-case="<id>"` y los metadatos del `<head>` (title, description, canonical, og:*; en inglés), y pon `"published": true` en su entrada de `casos.json`, y adapta el bloque `application/ld+json` del `<head>` (url, name, description, keywords).
+
+Los datos estructurados (schema.org) de `index.html` describen a la persona (`Person`); cada caso los enlaza como `CreativeWork` con su autor. Si cambias de cargo o empresa, actualiza también ese bloque.
+
+> ⚠️ **Confidencialidad.** Las capturas y cifras absolutas de GA4, Search Console y Brevo deben **anonimizarse o mostrarse como variaciones porcentuales** antes de publicar, y hay que **pedir el visto bueno a la dirección de Tecnotrip**.
+
+> ℹ️ El CV en PDF (`assets/docs/`) no se actualiza solo: puede quedar desactualizado respecto a la web.
+
+> `casos.json` se carga con `fetch()`: funciona en GitHub Pages y con un servidor local (ver abajo), no abriendo `index.html` con doble clic.
 
 ## Afegir la foto personal
 

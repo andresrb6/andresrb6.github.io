@@ -1,0 +1,215 @@
+{
+  "_confidencialidad": "CONFIDENCIAL: las capturas y cifras absolutas de GA4, Search Console y Brevo deben anonimizarse o mostrarse como variaciones porcentuales antes de publicar. Pedir el visto bueno a la dirección de Tecnotrip antes de publicar cualquier dato.",
+  "_ayuda": "Valores: null = se muestra [PENDIENTE]; \"measuring\" = se muestra 'En medición'; cualquier otro texto se muestra tal cual. Estados: audit_done | in_progress | measured. Los textos van en {\"es\", \"ca\", \"en\"}. Un caso con \"published\": false sale en el hub como 'Caso en preparación' y sin enlace.",
+  "cases": [
+    {
+      "id": "rebranding",
+      "published": false,
+      "status": "audit_done",
+      "icon": "spark",
+      "cv": { "experience": "exp-tecnotrip", "bullet": 6 },
+      "title": {
+        "es": "Rebranding y materiales corporativos",
+        "ca": "Rebranding i materials corporatius",
+        "en": "Rebranding and corporate materials"
+      },
+      "shortTitle": { "es": "Rebranding", "ca": "Rebranding", "en": "Rebranding" },
+      "card": {
+        "problem": {
+          "es": "Identidad visual sin manual de referencia y materiales comerciales (anuncios, dípticos, fichas técnicas) con estéticas dispares.",
+          "ca": "Identitat visual sense manual de referència i materials comercials (anuncis, díptics, fitxes tècniques) amb estètiques diferents.",
+          "en": "No brand guidelines and sales materials (ads, brochures, technical sheets) with inconsistent looks."
+        },
+        "result": "measuring"
+      }
+    },
+    {
+      "id": "email-marketing-crm",
+      "published": false,
+      "status": "audit_done",
+      "icon": "mail",
+      "cv": { "experience": "exp-tecnotrip", "bullet": 4 },
+      "title": {
+        "es": "Email marketing y CRM",
+        "ca": "Email marketing i CRM",
+        "en": "Email marketing and CRM"
+      },
+      "shortTitle": { "es": "Email + CRM", "ca": "Email + CRM", "en": "Email + CRM" },
+      "card": {
+        "problem": {
+          "es": "Base de datos sin depurar ni segmentar y envíos sin automatizaciones ni KPIs de referencia.",
+          "ca": "Base de dades sense depurar ni segmentar i enviaments sense automatitzacions ni KPIs de referència.",
+          "en": "Uncleaned, unsegmented database and email sends with no automation or baseline KPIs."
+        },
+        "result": "measuring"
+      }
+    },
+    {
+      "id": "seo-geo-ga4",
+      "published": true,
+      "status": "audit_done",
+      "icon": "chart",
+      "cv": { "experience": "exp-tecnotrip", "bullet": 3 },
+      "title": {
+        "es": "SEO, GEO y GA4: visibilidad que convierte",
+        "ca": "SEO, GEO i GA4: visibilitat que converteix",
+        "en": "SEO, GEO and GA4: visibility that converts"
+      },
+      "shortTitle": { "es": "SEO + GEO + GA4", "ca": "SEO + GEO + GA4", "en": "SEO + GEO + GA4" },
+      "subtitle": {
+        "es": "Auditoría de Search Console, visibilidad en buscadores de IA y análisis de GA4 para mejorar la tasa de conversión de la web.",
+        "ca": "Auditoria de Search Console, visibilitat en cercadors d'IA i anàlisi de GA4 per millorar la taxa de conversió del web.",
+        "en": "Search Console audit, visibility in AI search and GA4 analysis to improve the website's conversion rate."
+      },
+      "card": {
+        "problem": {
+          "es": "No se sabía qué búsquedas traían tráfico, cuánto convertía ni si la marca aparecía en las respuestas de IA.",
+          "ca": "No se sabia quines cerques portaven trànsit, quant convertia ni si la marca apareixia a les respostes d'IA.",
+          "en": "It wasn't clear which searches drove traffic, how much of it converted, or whether the brand appeared in AI answers."
+        },
+        "result": "measuring"
+      },
+      "role": {
+        "es": "Responsable de Marketing Digital",
+        "ca": "Responsable de Màrqueting Digital",
+        "en": "Digital Marketing Manager"
+      },
+      "company": "Tecnotrip, S.A.",
+      "period": null,
+      "tools": ["Google Search Console", "Google Analytics 4", "Looker Studio"],
+      "context": {
+        "es": [
+          "Tecnotrip es un fabricante de maquinaria de envasado al vacío y termosellado con sede en Terrassa (Barcelona), que vende a clientes industriales y distribuidores en España y en mercados internacionales.",
+          "La web es el principal punto de contacto digital con clientes potenciales, pero no había una visión clara de qué búsquedas la hacían visible, qué páginas generaban solicitudes ni cómo aparecía la marca cuando un comprador pregunta a un asistente de IA (ChatGPT, Gemini, Perplexity) por proveedores del sector."
+        ],
+        "ca": [
+          "Tecnotrip és un fabricant de maquinària d'envasament al buit i termosegellat amb seu a Terrassa (Barcelona), que ven a clients industrials i distribuïdors a Espanya i a mercats internacionals.",
+          "El web és el principal punt de contacte digital amb clients potencials, però no hi havia una visió clara de quines cerques el feien visible, quines pàgines generaven sol·licituds ni com apareixia la marca quan un comprador pregunta a un assistent d'IA (ChatGPT, Gemini, Perplexity) per proveïdors del sector."
+        ],
+        "en": [
+          "Tecnotrip manufactures vacuum packaging and tray-sealing machinery in Terrassa (Barcelona), selling to industrial customers and distributors in Spain and international markets.",
+          "The website is the main digital touchpoint with prospects, but there was no clear view of which searches made it visible, which pages generated enquiries, or how the brand showed up when a buyer asks an AI assistant (ChatGPT, Gemini, Perplexity) for suppliers in the sector."
+        ]
+      },
+      "baseline": [
+        { "label": { "es": "Clics orgánicos / mes (GSC)", "ca": "Clics orgànics / mes (GSC)", "en": "Organic clicks / month (GSC)" }, "value": null },
+        { "label": { "es": "Impresiones / mes (GSC)", "ca": "Impressions / mes (GSC)", "en": "Impressions / month (GSC)" }, "value": null },
+        { "label": { "es": "CTR orgánico medio", "ca": "CTR orgànic mitjà", "en": "Average organic CTR" }, "value": null },
+        { "label": { "es": "Posición media", "ca": "Posició mitjana", "en": "Average position" }, "value": null },
+        { "label": { "es": "Tasa de conversión web (GA4)", "ca": "Taxa de conversió web (GA4)", "en": "Website conversion rate (GA4)" }, "value": null },
+        { "label": { "es": "Menciones de la marca en IA (muestra de preguntas)", "ca": "Mencions de la marca a l'IA (mostra de preguntes)", "en": "Brand mentions in AI answers (prompt sample)" }, "value": null }
+      ],
+      "findings": [
+        { "area": { "es": "Indexación y cobertura", "ca": "Indexació i cobertura", "en": "Indexing and coverage" }, "text": null },
+        { "area": { "es": "Consultas y páginas con más potencial", "ca": "Consultes i pàgines amb més potencial", "en": "Highest-potential queries and pages" }, "text": null },
+        { "area": { "es": "Visibilidad en buscadores de IA (GEO)", "ca": "Visibilitat en cercadors d'IA (GEO)", "en": "Visibility in AI search (GEO)" }, "text": null },
+        { "area": { "es": "Medición y conversión en GA4", "ca": "Mesura i conversió a GA4", "en": "Measurement and conversion in GA4" }, "text": null }
+      ],
+      "actions": [
+        {
+          "done": true,
+          "text": {
+            "es": "Auditoría de Google Search Console: cobertura e indexación, consultas, páginas y CTR.",
+            "ca": "Auditoria de Google Search Console: cobertura i indexació, consultes, pàgines i CTR.",
+            "en": "Google Search Console audit: coverage and indexing, queries, pages and CTR."
+          }
+        },
+        {
+          "done": true,
+          "text": {
+            "es": "Revisión de GA4: eventos de conversión (key events), UTMs y recorrido hasta la solicitud de contacto.",
+            "ca": "Revisió de GA4: esdeveniments de conversió (key events), UTMs i recorregut fins a la sol·licitud de contacte.",
+            "en": "GA4 review: conversion events (key events), UTMs and the path to a contact request."
+          }
+        },
+        {
+          "done": true,
+          "text": {
+            "es": "Test de visibilidad en IA: batería de preguntas del sector en asistentes de IA para comprobar si citan a Tecnotrip.",
+            "ca": "Test de visibilitat a l'IA: bateria de preguntes del sector en assistents d'IA per comprovar si citen Tecnotrip.",
+            "en": "AI visibility test: a set of industry questions run on AI assistants to check whether they cite Tecnotrip."
+          }
+        },
+        {
+          "done": true,
+          "text": {
+            "es": "Priorización de mejoras según impacto y esfuerzo.",
+            "ca": "Priorització de millores segons impacte i esforç.",
+            "en": "Improvements prioritised by impact and effort."
+          }
+        },
+        {
+          "done": false,
+          "text": {
+            "es": "Optimización on-page de las páginas clave de producto y sector.",
+            "ca": "Optimització on-page de les pàgines clau de producte i sector.",
+            "en": "On-page optimisation of key product and industry pages."
+          }
+        },
+        {
+          "done": false,
+          "text": {
+            "es": "Contenido estructurado para respuestas de IA: preguntas frecuentes, datos técnicos y casos de uso.",
+            "ca": "Contingut estructurat per a respostes d'IA: preguntes freqüents, dades tècniques i casos d'ús.",
+            "en": "Structured content for AI answers: FAQs, technical data and use cases."
+          }
+        },
+        {
+          "done": false,
+          "text": {
+            "es": "Ajuste de key events y panel de seguimiento en Looker Studio.",
+            "ca": "Ajust dels key events i panell de seguiment a Looker Studio.",
+            "en": "Key events fine-tuning and a tracking dashboard in Looker Studio."
+          }
+        }
+      ],
+      "kpis": [
+        { "label": { "es": "Clics orgánicos / mes", "ca": "Clics orgànics / mes", "en": "Organic clicks / month" }, "before": null, "after": "measuring" },
+        { "label": { "es": "CTR orgánico medio", "ca": "CTR orgànic mitjà", "en": "Average organic CTR" }, "before": null, "after": "measuring" },
+        { "label": { "es": "Posición media", "ca": "Posició mitjana", "en": "Average position" }, "before": null, "after": "measuring" },
+        { "label": { "es": "Tasa de conversión web", "ca": "Taxa de conversió web", "en": "Website conversion rate" }, "before": null, "after": "measuring" },
+        { "label": { "es": "Solicitudes de contacto desde orgánico", "ca": "Sol·licituds de contacte des d'orgànic", "en": "Contact requests from organic" }, "before": null, "after": "measuring" },
+        { "label": { "es": "Menciones de la marca en IA", "ca": "Mencions de la marca a l'IA", "en": "Brand mentions in AI answers" }, "before": null, "after": "measuring" }
+      ],
+      "learnings": null,
+      "next": {
+        "es": [
+          "Ejecutar las mejoras priorizadas en la auditoría.",
+          "Medir la evolución mensual de los KPIs frente a la línea base.",
+          "Repetir el test de visibilidad en IA con la misma batería de preguntas."
+        ],
+        "ca": [
+          "Executar les millores prioritzades a l'auditoria.",
+          "Mesurar l'evolució mensual dels KPIs respecte a la línia base.",
+          "Repetir el test de visibilitat a l'IA amb la mateixa bateria de preguntes."
+        ],
+        "en": [
+          "Roll out the improvements prioritised in the audit.",
+          "Track monthly KPI changes against the baseline.",
+          "Re-run the AI visibility test with the same question set."
+        ]
+      }
+    },
+    {
+      "id": "contenidos",
+      "published": false,
+      "status": "audit_done",
+      "icon": "target",
+      "cv": { "experience": "exp-tecnotrip", "bullet": 6 },
+      "title": {
+        "es": "Contenidos orientados a conversión",
+        "ca": "Continguts orientats a conversió",
+        "en": "Conversion-focused content"
+      },
+      "shortTitle": { "es": "Contenidos", "ca": "Continguts", "en": "Content" },
+      "card": {
+        "problem": {
+          "es": "Redes sociales, newsletters y blog sin una línea común orientada a conversión ni a valor de marca.",
+          "ca": "Xarxes socials, newsletters i blog sense una línia comuna orientada a conversió ni a valor de marca.",
+          "en": "Social media, newsletters and blog without a shared line focused on conversion or brand value."
+        },
+        "result": "measuring"
+      }
+    }
+  ]
+}
