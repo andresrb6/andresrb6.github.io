@@ -27,7 +27,7 @@
 
   function detectLang() {
     var fromUrl = new URLSearchParams(location.search).get("lang");
-    if (LANGS.indexOf(fromUrl) !== -1) return fromUrl;
+    if (LANGS.indexOf(fromUrl) !== -1) { storageSet(fromUrl); return fromUrl; } // se mantiene al navegar a los casos
     var stored = storageGet();
     if (LANGS.indexOf(stored) !== -1) return stored;
     var nav = (navigator.languages || [navigator.language || ""]).map(function (l) { return String(l).slice(0, 2).toLowerCase(); });
@@ -72,13 +72,25 @@
     }).join("");
   }
 
+  // Enlaces "Ver caso completo" bajo los logros del CV (solo casos publicados)
+  function caseLinks(itemId, bulletIndex, d) {
+    var C = window.CasesData;
+    if (!C || !itemId) return "";
+    return C.published().filter(function (c) {
+      return c.cv && c.cv.experience === itemId && c.cv.bullet === bulletIndex;
+    }).map(function (c) {
+      return '<a class="xp-case-link" href="' + esc(C.url(c)) + '">' + esc(d.portfolio.viewCase) +
+        ": " + esc(C.tr(c.shortTitle, currentLang)) + ' <span aria-hidden="true">→</span></a>';
+    }).join("");
+  }
+
   function renderTimeline(d) {
     var ol = $("#timeline");
     if (!ol) return;
     ol.innerHTML = d.experience.items.map(function (x) {
       var end = x.end || d.ui.present;
       var current = !x.end;
-      return '<li class="xp' + (current ? " xp--current" : "") + '">' +
+      return '<li class="xp' + (current ? " xp--current" : "") + '"' + (x.id ? ' id="' + esc(x.id) + '"' : "") + ">" +
         '<span class="xp-dot" aria-hidden="true"></span>' +
         '<div class="xp-card">' +
           '<div class="xp-head">' +
@@ -86,7 +98,7 @@
             '<p class="xp-company">' + esc(x.company) + ' <span>· ' + esc(x.place) + "</span></p></div>" +
             '<p class="xp-date">' + (current ? '<span class="live-dot" aria-hidden="true"></span>' : "") + esc(x.start) + " – " + esc(end) + "</p>" +
           "</div>" +
-          '<ul class="xp-list">' + x.bullets.map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + "</ul>" +
+          '<ul class="xp-list">' + x.bullets.map(function (b, i) { return "<li>" + esc(b) + caseLinks(x.id, i, d) + "</li>"; }).join("") + "</ul>" +
           '<div class="xp-tags">' + x.tags.map(function (t) { return '<span class="tag">' + esc(t) + "</span>"; }).join("") + "</div>" +
         "</div></li>";
     }).join("");
@@ -121,9 +133,12 @@
     currentLang = lang;
     var d = dict();
     document.documentElement.lang = lang;
-    document.title = d.meta.title;
-    var desc = $('meta[name="description"]');
-    if (desc) desc.setAttribute("content", d.meta.description);
+    // Las páginas de caso gestionan su propio título y descripción (case.js)
+    if (!document.body.hasAttribute("data-case")) {
+      document.title = d.meta.title;
+      var desc = $('meta[name="description"]');
+      if (desc) desc.setAttribute("content", d.meta.description);
+    }
 
     renderStatic();
     renderHeroFacts(d);
@@ -131,7 +146,7 @@
     renderTimeline(d);
     renderLangs(d);
     renderSkills(d);
-    if (window.Portfolio) window.Portfolio.render(lang, d.portfolio);
+    document.dispatchEvent(new CustomEvent("langchange", { detail: { lang: lang } }));
 
     $$("[data-lang]").forEach(function (b) {
       var on = b.getAttribute("data-lang") === lang;
@@ -215,7 +230,8 @@
       return;
     }
 
-    var links = $$(".nav-desktop a, .drawer-nav a");
+    // Solo enlaces internos de esta página (en las páginas de caso apuntan a ../#...)
+    var links = $$(".nav-desktop a, .drawer-nav a").filter(function (a) { return a.getAttribute("href").charAt(0) === "#"; });
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
@@ -240,6 +256,8 @@
     $$(".reveal:not(.is-visible)").forEach(function (el) { reveal.observe(el); });
   }
 
+  window.Site = { lang: function () { return currentLang; }, dict: dict };
+
   /* ---------- Init ---------- */
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -247,8 +265,16 @@
     var year = $("#year");
     if (year) year.textContent = new Date().getFullYear();
 
-    if (window.Portfolio) window.Portfolio.init(dict);
     setLang(detectLang(), false);
+
+    // Al llegar los casos se añaden los enlaces del CV; si la URL trae ancla
+    // (p. ej. #exp-tecnotrip desde una página de caso), se recoloca el scroll.
+    if (window.CasesData && $("#timeline")) {
+      window.CasesData.load().then(function () { renderTimeline(dict()); }).catch(function () {}).then(function () {
+        var target = location.hash && document.getElementById(location.hash.slice(1));
+        if (target) target.scrollIntoView({ behavior: "instant" });
+      });
+    }
 
     document.addEventListener("click", function (e) {
       var btn = e.target.closest("[data-lang]");

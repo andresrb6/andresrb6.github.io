@@ -16,6 +16,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script>document.documentElement.classList.add("js");</script>
+  <!-- Datos estructurados (schema.org): describen a la persona para buscadores. Invisibles para el visitante. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://andresrb6.github.io/#person",
+        "name": "Andrés Roldán Baldó",
+        "url": "https://andresrb6.github.io/",
+        "email": "mailto:andresroldan.rb6@gmail.com",
+        "jobTitle": "Digital Marketing Manager",
+        "worksFor": { "@type": "Organization", "name": "Tecnotrip, S.A." },
+        "address": { "@type": "PostalAddress", "addressLocality": "Terrassa", "addressRegion": "Barcelona", "addressCountry": "ES" },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "Euncet Business School" },
+          { "@type": "CollegeOrUniversity", "name": "Universitat Politècnica de Catalunya (UPC)" }
+        ],
+        "knowsLanguage": ["ca", "es", "en"],
+        "knowsAbout": ["Digital marketing strategy", "Email marketing", "CRM", "SEO", "Google Analytics 4", "Looker Studio", "Content marketing", "Lead generation"],
+        "sameAs": ["https://www.linkedin.com/in/andres-roldan-baldo-marketing-empresa"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://andresrb6.github.io/#website",
+        "url": "https://andresrb6.github.io/",
+        "name": "Andrés Roldán Baldó",
+        "inLanguage": ["ca", "es", "en"],
+        "author": { "@id": "https://andresrb6.github.io/#person" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Icon sprite -->
@@ -48,8 +81,8 @@
         <ul>
           <li><a href="#about" data-i18n="nav.about">Sobre mi</a></li>
           <li><a href="#experience" data-i18n="nav.experience">Experiència</a></li>
+          <li><a href="#portfolio" data-i18n="nav.portfolio">Projectes</a></li>
           <li><a href="#skills" data-i18n="nav.skills">Competències</a></li>
-          <li><a href="#portfolio" data-i18n="nav.portfolio">Portafoli</a></li>
           <li><a href="#contact" data-i18n="nav.contact">Contacte</a></li>
         </ul>
       </nav>
@@ -80,8 +113,8 @@
       <ul class="drawer-nav">
         <li><a href="#about" data-i18n="nav.about">Sobre mi</a></li>
         <li><a href="#experience" data-i18n="nav.experience">Experiència</a></li>
+        <li><a href="#portfolio" data-i18n="nav.portfolio">Projectes</a></li>
         <li><a href="#skills" data-i18n="nav.skills">Competències</a></li>
-        <li><a href="#portfolio" data-i18n="nav.portfolio">Portafoli</a></li>
         <li><a href="#contact" data-i18n="nav.contact">Contacte</a></li>
       </ul>
     </nav>
@@ -106,7 +139,7 @@
           <h1 class="hero-title" data-i18n-html="hero.title">Converteixo dades en <em>decisions</em> que fan créixer el negoci.</h1>
           <p class="hero-lead" data-i18n="hero.lead"></p>
           <div class="hero-ctas">
-            <a class="btn btn-accent" href="#portfolio"><span data-i18n="hero.ctaPortfolio">Veure portafoli</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-accent" href="#portfolio"><span data-i18n="hero.ctaPortfolio">Veure projectes</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
             <a class="btn btn-ghost" href="#contact" data-i18n="hero.ctaContact">Contacte</a>
           </div>
           <ul class="hero-facts" id="hero-facts"></ul>
@@ -172,6 +205,18 @@
       </div>
     </section>
 
+    <!-- PROJECTS (hub de casos de estudio; datos en data/casos.json) -->
+    <section class="section section--dark" id="portfolio">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker" data-i18n="portfolio.kicker">Projectes</p>
+          <h2 data-i18n="portfolio.title">Projectes destacats</h2>
+          <p class="section-intro" data-i18n="portfolio.intro"></p>
+        </div>
+        <div class="projects projects--hub" id="projects" aria-live="polite"></div>
+      </div>
+    </section>
+
     <!-- SKILLS -->
     <section class="section" id="skills">
       <div class="container">
@@ -184,21 +229,6 @@
           <h3 data-i18n="skills.softTitle">Soft skills</h3>
           <ul class="chips chips--soft" id="soft-skills"></ul>
         </div>
-      </div>
-    </section>
-
-    <!-- PORTFOLIO -->
-    <section class="section section--dark" id="portfolio">
-      <div class="container">
-        <div class="section-head section-head--row reveal">
-          <div>
-            <p class="kicker" data-i18n="portfolio.kicker">Portafoli</p>
-            <h2 data-i18n="portfolio.title">Projectes destacats</h2>
-            <p class="section-intro" data-i18n="portfolio.intro"></p>
-          </div>
-          <div class="filters" id="portfolio-filters" role="toolbar" aria-label="Filtres" data-i18n-attr="aria-label:portfolio.filtersLabel"></div>
-        </div>
-        <div class="projects" id="projects" aria-live="polite"></div>
       </div>
     </section>
 
@@ -238,21 +268,11 @@
     </div>
   </footer>
 
-  <!-- Project detail modal -->
-  <dialog class="modal" id="project-modal" aria-labelledby="modal-title">
-    <div class="modal-inner">
-      <button class="modal-close" type="button" aria-label="Tancar" data-i18n-attr="aria-label:ui.close" data-modal-close>
-        <svg aria-hidden="true"><use href="#i-close"/></svg>
-      </button>
-      <div id="modal-body"></div>
-    </div>
-  </dialog>
-
   <noscript><p class="noscript">Aquesta web necessita JavaScript per mostrar el contingut. · Esta web necesita JavaScript. · This site requires JavaScript.</p></noscript>
 
   <script src="assets/js/content.js"></script>
-  <script src="data/projects.js"></script>
-  <script src="assets/js/portfolio.js"></script>
+  <script src="assets/js/cases-data.js"></script>
+  <script src="assets/js/projects-hub.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
