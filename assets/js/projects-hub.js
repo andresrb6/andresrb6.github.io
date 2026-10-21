@@ -31,7 +31,7 @@
     }).join("");
     var c = D.find(db.case);
     var link = c && c.published ? '<a class="arrow-link label" href="' + esc(D.url(c)) + '">' + esc(t.viewCaseShort) + '<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>' : "";
-    return '<figure class="dash" aria-label="' + esc(t.dashboardLabel) + '">' +
+    return '<figure class="dash panel" aria-label="' + esc(t.dashboardLabel) + '">' +
       '<div class="dash-bar"><span class="dash-lights" aria-hidden="true"><i></i><i></i><i></i></span>' +
         '<span class="label dash-title">' + esc(db.window) + "</span>" +
         '<span class="label dash-live"><span class="pulse" aria-hidden="true"></span>' + esc(D.tr(db.status, lang)) + " · " + esc(db.date) + "</span></div>" +
@@ -44,7 +44,7 @@
   function kpis(c, lang, t) {
     var list = (c.card && c.card.kpis) || [];
     if (!list.length) return "";
-    return '<ul class="kpis">' + list.slice(0, 3).map(function (k) {
+    return '<ul class="kpi-panel panel">' + list.slice(0, 3).map(function (k) {
       return '<li class="kpi"><span class="kpi-value">' + D.value(k.value, lang, t) + '</span><span class="label">' + esc(D.tr(k.label, lang)) + "</span></li>";
     }).join("") + "</ul>";
   }
@@ -53,16 +53,19 @@
     var facts = [["problem", c.card.problem], ["execution", c.card.execution]]
       .filter(function (f) { return f[1]; })
       .map(function (f) { return '<div><dt class="label">' + esc(tp[f[0]]) + "</dt><dd>" + esc(D.tr(f[1], lang)) + "</dd></div>"; }).join("");
+    var result = '<span class="label">' + esc(tp.result) + ": " + D.value(c.card.result, lang, t) + "</span>";
     var foot = c.published
-      ? '<a class="btn btn-dark" href="' + esc(D.url(c)) + '">' + esc(tp.viewCase) + '<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>' +
-        '<span class="label">' + esc(tp.result) + ": " + D.value(c.card.result, lang, t) + "</span>"
-      : '<span class="label">' + esc(tp.pending) + "</span>" + '<span class="label">' + esc(tp.result) + ": " + D.value(c.card.result, lang, t) + "</span>";
-    return '<article class="case-card' + (c.published ? " card-bone" : " is-soon") + '">' +
-      '<div class="case-card-top"><span class="case-card-index">[' + (i < 9 ? "0" : "") + (i + 1) + "]</span>" + D.status(c.status, t) + "</div>" +
-      "<h3>" + esc(D.tr(c.title, lang)) + "</h3>" +
-      '<dl class="case-card-facts">' + facts + "</dl>" +
+      ? '<a class="btn btn-dark" href="' + esc(D.url(c)) + '">' + esc(tp.viewCase) + '<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>' + result
+      : '<span class="label">' + esc(tp.pending) + "</span>" + result;
+    return '<article class="case-row' + (c.published ? "" : " is-soon") + '">' +
+      '<span class="case-row-index idx">[' + (i < 9 ? "0" : "") + (i + 1) + "]</span>" +
+      "<div>" +
+        '<div class="case-row-top">' + D.status(c.status, t) + "</div>" +
+        "<h3>" + esc(D.tr(c.title, lang)) + "</h3>" +
+        '<dl class="case-facts">' + facts + "</dl>" +
+        '<div class="case-row-foot">' + foot + "</div>" +
+      "</div>" +
       kpis(c, lang, t) +
-      '<div class="case-card-foot">' + foot + "</div>" +
     "</article>";
   }
 

@@ -46,13 +46,12 @@ Los datos estructurados (schema.org) de `index.html` describen a la persona (`Pe
 
 ## Sistema de disseny
 
-Dues zones, cadascuna amb el seu sistema de referència:
+Una sola web **Haus Otto** amb les dades en llenguatge **Factory.ai**:
 
-- **Haus Otto (zones clares: inici, perfil, trajectòria, contacte).** Blanc pur i negre, el nom com a wordmark monumental condensat que s'ajusta a l'amplada de la pantalla, titulars de secció a gran escala, l'espai buit com a separador i indicadors de secció a la dreta.
-- **Factory.ai (zona fosca de dades: casos i stack).** Canvas `#101010`, dashboard tipus aplicació amb mètriques i barres (dades a `data/casos.json` → `dashboard`), targeta clara (`#eeeeee`) per al cas publicat sobre fons negre, targetes amb contorn per als pendents, marquee d'eines i etiquetes en Geist Mono.
-- **Frontier AI (micro-components).** Pills, fletxes d'acció i botons precisos.
+- **Otto (estructura i estètica).** Fons blanc a tota la pàgina, negre, cantonades rectes, el nom com a wordmark condensat que s'ajusta a l'amplada, titulars de secció monumentals, files separades per línies fines i indicadors de secció a la dreta. Casos, stack i trajectòria fan servir el mateix format de fila.
+- **Factory.ai (només dades).** Regla: *fosc = dada*. El dashboard de resultats, els KPIs de cada cas, les xifres del punt de partida i la taula de resultats són panells foscos (`.panel`, #101010) dins la pàgina blanca, amb Geist Mono, barres i comptadors.
 
-Tipografies (Google Fonts): **Archivo** condensada (wordmark i titulars), **Geist** (text) i **Geist Mono** (xifres, dates i etiquetes). Accents: `--signal` (#ee6018) per a estat i senyal, i `--metric` (#a0ca92) per a mètriques. Tots els tokens són a `:root` d'`assets/css/styles.css` i el contrast del text és AA.
+Tipografies (Google Fonts): **Archivo** condensada (wordmark i titulars), **Geist** (text) i **Geist Mono** (xifres, dates i etiquetes). Accents: `--signal` (#ee6018) per a estat i senyal; `--metric` (#a0ca92) només dins dels panells de dades. Tokens a `:root` d'`assets/css/styles.css`; contrast del text AA.
 
 ## Editar textos i idiomes
 

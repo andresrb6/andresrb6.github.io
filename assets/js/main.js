@@ -121,8 +121,8 @@
     if (grid) {
       grid.innerHTML = s.groups.map(function (g, i) {
         return '<article class="stack-card">' +
-          '<p class="label"><span class="idx">0' + (i + 1) + "</span> — " + esc(g.code) + "</p>" +
-          "<h3>" + esc(g.title) + "</h3>" +
+          '<div><p class="label"><span class="idx">0' + (i + 1) + "</span> — " + esc(g.code) + "</p>" +
+          "<h3>" + esc(g.title) + "</h3></div>" +
           '<ul class="stack-tools" aria-label="' + esc(s.toolsLabel) + '">' + g.tools.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" +
           '<p class="stack-methods"><span class="sr-only">' + esc(s.methodsLabel) + ": </span>" + esc(g.methods) + "</p>" +
         "</article>";
@@ -254,22 +254,8 @@
 
   function initScrollUi() {
     var header = $(".site-header");
-    var dots = $(".dots");
-    var ticking = false;
-    // Inverteix capçalera i punts quan queden sobre la zona fosca (Factory)
-    var onScroll = function () {
-      ticking = false;
-      var hb = header.getBoundingClientRect().bottom, mid = window.innerHeight / 2;
-      var overHeader = false, overMid = false;
-      $$(".zone-dark").forEach(function (z) { // es consulta cada cop: a les pàgines de cas es pinten després
-        var r = z.getBoundingClientRect();
-        if (r.top <= hb - 30 && r.bottom > hb - 30) overHeader = true;
-        if (r.top <= mid && r.bottom > mid) overMid = true;
-      });
-      header.classList.toggle("on-dark", overHeader);
-      if (dots) dots.classList.toggle("on-dark", overMid);
-    };
-    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+    var onScroll = function () { header.classList.toggle("is-scrolled", window.scrollY > 8); };
+    window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
     if (!("IntersectionObserver" in window)) {

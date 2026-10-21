@@ -59,7 +59,7 @@
   }
 
   function block(id, n, title, inner, dark) {
-    return '<section class="case-section ' + (dark ? "zone-dark" : "zone-light") + '" id="' + id + '" aria-labelledby="' + id + '-h"><div class="wrap case-section-inner">' +
+    return '<section class="case-section zone-light" id="' + id + '" aria-labelledby="' + id + '-h"><div class="wrap case-section-inner">' +
         '<div class="case-section-head"><span class="idx">' + pad(n) + '</span><h2 id="' + id + '-h">' + esc(title) + "</h2></div>" +
         '<div class="case-section-body">' + inner + "</div>" +
       "</div></section>";
@@ -88,7 +88,7 @@
         '</td><td class="kpi-arrow" aria-hidden="true">→</td><td>' + D.value(k.after, lang, t) + "</td>" +
         (hasTarget ? '<td class="kpi-target">' + (k.target ? esc(D.tr(k.target, lang)) : "—") + "</td>" : "") + "</tr>";
     }).join("");
-    var table = '<div class="kpi-table-wrap" tabindex="0" role="region" aria-labelledby="kpi-caption"><table class="kpi-table">' +
+    var table = '<div class="kpi-table-wrap panel" tabindex="0" role="region" aria-labelledby="kpi-caption"><table class="kpi-table">' +
       '<caption id="kpi-caption" class="label">' + esc(t.tableCaption) + "</caption>" +
       '<thead><tr><th scope="col">' + esc(t.kpi) + '</th><th scope="col">' + esc(t.before) +
       '</th><td class="kpi-arrow" aria-hidden="true"></td><th scope="col">' + esc(t.after) + "</th>" +
@@ -105,7 +105,7 @@
     "</div>";
 
     return block("context", 1, t.context, '<div class="prose">' + context + "</div>") +
-      block("baseline", 2, t.baseline, '<p class="case-lead">' + esc(t.baselineIntro) + '</p><ul class="stats">' + baseline + "</ul>" +
+      block("baseline", 2, t.baseline, '<p class="case-lead">' + esc(t.baselineIntro) + '</p><ul class="stats panel">' + baseline + "</ul>" +
         '<h3 class="label case-sub">' + esc(t.findings) + '</h3><ul class="rows">' + findings + "</ul>", true) +
       block("actions", 3, t.actions, '<ul class="actions">' + actions + "</ul>") +
       block("results", 4, t.results, table, true) +
