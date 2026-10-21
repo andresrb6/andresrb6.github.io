@@ -46,19 +46,20 @@ Los datos estructurados (schema.org) de `index.html` describen a la persona (`Pe
 
 ## Sistema de disseny: Raw Materials
 
-Zine sobre fons crema (`#f4e9e1`) amb display gegant i **un color per capítol**. Tots els tokens (colors, fonts, escala, radis, espaiats) són a `:root` d'`assets/css/styles.css`; cada secció rep el seu tema amb una classe `.sec-*`.
+Zine sobre fons crema (`#f4e9e1`) amb display gegant i **només dos colors**: vermell (Ember `#ff3d00`, el de la foto) i blau (Cobalt `#2835f8`), alternats per capítol. Tots els tokens són a `:root` d'`assets/css/styles.css`; cada secció rep el seu color amb una classe `.sec-*`.
 
-| Capítol | Color | Fons | Text sobre el color |
-|---|---|---|---|
-| 01 Sobre mi | Ember `#ff3d00` | Blush | tinta |
-| 02 Experiència | Cobalt `#2835f8` | Sky Tint | crema |
-| 03 Projectes | Violet `#5900cc` | Celadon | crema |
-| 04 Competències | Forest `#008163` | Sage | blanc |
-| 05 Contacte | Crimson `#ff003d` | Sand | tinta |
+| Capítol | Color | Text sobre el color |
+|---|---|---|
+| 01 Sobre mi | Vermell | tinta |
+| 02 Experiència | Blau | crema |
+| 03 Projectes | Vermell | tinta |
+| 04 Competències | Blau | crema |
+| 05 Contacte | Vermell | tinta |
 
 - Fonts: **General Sans** 400/500 i **Clash Display** 200/600 (Fontshare), **JetBrains Mono** 400 (Google Fonts).
 - Sense ombres, blur ni degradats. Radi 16px; pills 99px; marc de la foto 187px.
-- Ember, Forest i Crimson no s'usen mai com a color de text (no arriben a AA); només com a fons, vores i barres.
+- El vermell no s'usa mai com a color de text (no arriba a AA sobre crema); només com a fons, vores i barres.
+- Els titulars no parteixen mai una paraula: si no hi cap, `main.js` en redueix la mida fins que hi cap.
 - Navegació: targetes numerades a l'esquerra (escriptori) i al menú (mòbil); barra de progrés i comptador `01/05` a baix.
 
 ## Afegir la foto personal
