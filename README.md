@@ -7,7 +7,7 @@ HTML, CSS i JavaScript sense dependències ni procés de build. Està pensada pe
 
 ```
 .
-├── index.html               # One-page: hero, perfil, casos, stack, trajectòria, contacte
+├── index.html               # One-page: inici, sobre mi, experiència, projectes, competències, contacte
 ├── casos/                   # Una pàgina per cas d'estudi (mateix layout)
 │   └── seo-geo-ga4.html
 ├── 404.html                 # Pàgina d'error
@@ -17,10 +17,10 @@ HTML, CSS i JavaScript sense dependències ni procés de build. Està pensada pe
 │   ├── js/content.js        # Textos de la web en CA / ES / EN
 │   ├── js/main.js           # Idiomes, menú mòbil, CV, animacions
 │   ├── js/cases-data.js     # Carrega data/casos.json
-│   ├── js/projects-hub.js   # Targetes de "Casos" a la one-page
+│   ├── js/projects-hub.js   # Targetes de "Projectes" a la one-page
 │   ├── js/case.js           # Plantilla de la pàgina de cas
 │   ├── docs/                # CV en PDF descarregable
-│   └── img/                 # Favicon i imatges de projectes
+│   └── img/                 # Favicon, foto personal i imatges de projectes
 └── data/casos.json          # Contingut dels casos d'estudi
 ```
 
@@ -44,14 +44,15 @@ Los datos estructurados (schema.org) de `index.html` describen a la persona (`Pe
 
 > `casos.json` se carga con `fetch()`: funciona en GitHub Pages y con un servidor local (ver abajo), no abriendo `index.html` con doble clic.
 
-## Sistema de disseny
+## Afegir la foto personal
 
-Una sola web **Haus Otto** amb les dades en llenguatge **Factory.ai**:
+A `index.html`, substitueix el bloc `<figure class="photo-placeholder">…</figure>` per:
 
-- **Otto (estructura i estètica).** Fons blanc a tota la pàgina, negre, cantonades rectes, el nom com a wordmark condensat que s'ajusta a l'amplada, titulars de secció monumentals, files separades per línies fines i indicadors de secció a la dreta. Casos, stack i trajectòria fan servir el mateix format de fila.
-- **Factory.ai (només dades).** Regla: *fosc = dada*. El dashboard de resultats, els KPIs de cada cas, les xifres del punt de partida i la taula de resultats són panells foscos (`.panel`, #101010) dins la pàgina blanca, amb Geist Mono, barres i comptadors.
+```html
+<img class="hero-photo" src="assets/img/andres-roldan.webp" alt="Andrés Roldán Baldó" width="760" height="950">
+```
 
-Tipografies (Google Fonts): **Archivo** condensada (wordmark i titulars), **Geist** (text) i **Geist Mono** (xifres, dates i etiquetes). Accents: `--signal` (#ee6018) per a estat i senyal; `--metric` (#a0ca92) només dins dels panells de dades. Tokens a `:root` d'`assets/css/styles.css`; contrast del text AA.
+Format recomanat: vertical 4:5, 760×950 px com a mínim, WebP o JPG optimitzat (< 200 KB).
 
 ## Editar textos i idiomes
 
