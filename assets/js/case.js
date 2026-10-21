@@ -29,7 +29,8 @@
         // Cada estat marca la seva fase com a completada
         var state = i <= current ? "done" : (i === current + 1 ? "next" : "todo");
         return '<li class="phase phase--' + state + '"' + (i === current ? ' aria-current="step"' : "") + ">" +
-          '<span class="phase-num">' + (state === "done" ? "[✓] " : "[ ] ") + pad(i + 1) + "</span>" +
+          '<span class="phase-bar" aria-hidden="true"></span>' +
+          '<span class="label">' + pad(i + 1) + (state === "done" ? " · ✓" : "") + "</span>" +
           '<span class="phase-name">' + esc(name) + "</span></li>";
       }).join("") + "</ol>";
   }
@@ -37,7 +38,7 @@
   function hero(c, lang, t) {
     var tools = (c.tools || []).map(function (x) { return '<li class="pill">' + esc(x) + "</li>"; }).join("");
     var num = D.cases().indexOf(c) + 1;
-    return '<header class="case-hero"><div class="wrap">' +
+    return '<header class="case-hero zone-light"><div class="wrap">' +
         '<nav class="breadcrumb" aria-label="' + esc(t.breadcrumbLabel) + '"><ol>' +
           '<li><a href="../#hero">' + esc(t.home) + "</a></li>" +
           '<li><a href="../#portfolio">' + esc(t.projects) + "</a></li>" +
@@ -45,7 +46,7 @@
         "</ol></nav>" +
         '<div class="case-hero-top"><span class="idx">[' + pad(num) + "]</span>" +
           '<span class="label">' + esc(t.caseStudy) + "</span>" + D.status(c.status, t) + "</div>" +
-        '<h1 class="case-title">' + esc(D.tr(c.title, lang)) + "</h1>" +
+        '<h1 class="case-title display">' + esc(D.tr(c.title, lang)) + "</h1>" +
         '<p class="case-subtitle">' + esc(D.tr(c.subtitle, lang)) + "</p>" +
         phases(c, t) +
         '<dl class="case-meta">' +
@@ -54,12 +55,11 @@
           '<div><dt class="label">' + esc(t.period) + "</dt><dd>" + D.value(c.period, lang, t) + "</dd></div>" +
           '<div class="case-meta-tools"><dt class="label">' + esc(t.tools) + '</dt><dd><ul class="pills">' + tools + "</ul></dd></div>" +
         "</dl>" +
-        '<div class="case-hero-pad"></div>' +
       "</div></header>";
   }
 
-  function block(id, n, title, inner) {
-    return '<section class="case-section" id="' + id + '" aria-labelledby="' + id + '-h"><div class="wrap case-section-inner">' +
+  function block(id, n, title, inner, dark) {
+    return '<section class="case-section ' + (dark ? "zone-dark" : "zone-light") + '" id="' + id + '" aria-labelledby="' + id + '-h"><div class="wrap case-section-inner">' +
         '<div class="case-section-head"><span class="idx">' + pad(n) + '</span><h2 id="' + id + '-h">' + esc(title) + "</h2></div>" +
         '<div class="case-section-body">' + inner + "</div>" +
       "</div></section>";
@@ -106,9 +106,9 @@
 
     return block("context", 1, t.context, '<div class="prose">' + context + "</div>") +
       block("baseline", 2, t.baseline, '<p class="case-lead">' + esc(t.baselineIntro) + '</p><ul class="stats">' + baseline + "</ul>" +
-        '<h3 class="label case-sub">' + esc(t.findings) + '</h3><ul class="rows">' + findings + "</ul>") +
+        '<h3 class="label case-sub">' + esc(t.findings) + '</h3><ul class="rows">' + findings + "</ul>", true) +
       block("actions", 3, t.actions, '<ul class="actions">' + actions + "</ul>") +
-      block("results", 4, t.results, table) +
+      block("results", 4, t.results, table, true) +
       block("learnings", 5, t.learningsAndNext, learn);
   }
 
@@ -124,10 +124,10 @@
         '<a class="pager-link pager-link--next" href="' + esc(D.url(next)) + '" rel="next"><span class="label">' + esc(t.nextCase) + " →</span><strong>" + esc(D.tr(next.title, lang)) + "</strong></a>" +
       "</div>";
     }
-    return '<nav class="case-nav" aria-label="' + esc(t.caseNavLabel) + '"><div class="wrap">' + links +
+    return '<nav class="case-nav zone-light" aria-label="' + esc(t.caseNavLabel) + '"><div class="wrap">' + links +
       '<div class="case-back">' +
-        '<a class="btn btn-primary" href="../#portfolio">← ' + esc(t.backProjects) + "</a>" +
-        '<a class="btn btn-outline" href="../#' + esc(c.cv ? c.cv.experience : "experience") + '">' + esc(t.backCv) + "</a>" +
+        '<a class="btn btn-dark" href="../#portfolio">← ' + esc(t.backProjects) + "</a>" +
+        '<a class="btn btn-ghost" href="../#' + esc(c.cv ? c.cv.experience : "experience") + '">' + esc(t.backCv) + '<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>' +
       "</div></div></nav>";
   }
 
@@ -136,7 +136,7 @@
     var t = dict.cases;
     var c = D.find(caseId);
     if (!c || !c.published) {
-      mount.innerHTML = '<div class="wrap case-empty"><h1>' + esc(t.notFound) + '</h1><p><a class="btn btn-primary" href="../#portfolio">← ' + esc(t.backProjects) + "</a></p></div>";
+      mount.innerHTML = '<div class="wrap case-empty"><h1>' + esc(t.notFound) + '</h1><p><a class="btn btn-dark" href="../#portfolio">← ' + esc(t.backProjects) + "</a></p></div>";
       return;
     }
     document.title = D.tr(c.title, lang) + " · " + t.caseStudy + " · Andrés Roldán Baldó";

@@ -46,15 +46,13 @@ Los datos estructurados (schema.org) de `index.html` describen a la persona (`Pe
 
 ## Sistema de disseny
 
-Fusió de tres sistemes de referència, amb una jerarquia fixa:
+Dues zones, cadascuna amb el seu sistema de referència:
 
-- **Haus Otto — macro-grid i estètica principal.** Fons blanc trencat (`--paper`), text negre, retícula visible de 12 columnes amb línies d'1px, nom a escala monumental, sense ombres ni gradients, cantonades rectes a les targetes.
-- **Factory.ai — casos.** Targetes amb índex `[01]`, estat, repte / execució / resultat i bloc de 3 KPIs en monoespaiada.
-- **Frontier AI — micro-components.** Pills (`9999px`), botons de 6px (negre ple o contorn), fletxes en l'accent i tipografia mono per a xifres, dates i etiquetes.
+- **Haus Otto (zones clares: inici, perfil, trajectòria, contacte).** Blanc pur i negre, el nom com a wordmark monumental condensat que s'ajusta a l'amplada de la pantalla, titulars de secció a gran escala, l'espai buit com a separador i indicadors de secció a la dreta.
+- **Factory.ai (zona fosca de dades: casos i stack).** Canvas `#101010`, dashboard tipus aplicació amb mètriques i barres (dades a `data/casos.json` → `dashboard`), targeta clara (`#eeeeee`) per al cas publicat sobre fons negre, targetes amb contorn per als pendents, marquee d'eines i etiquetes en Geist Mono.
+- **Frontier AI (micro-components).** Pills, fletxes d'acció i botons precisos.
 
-Tipografies: **Geist** (text) i **Geist Mono** (xifres, dates i etiquetes), de Google Fonts. Un sol accent, `--accent` (#e8560f), només per a elements que no són text; per a text en accent s'usa `--accent-ink` (#b0400a, contrast AA). Tots els tokens són a `:root` d'`assets/css/styles.css`.
-
-Sense foto: el disseny és tipogràfic. Si se n'afegeix una, ha d'entrar com una cel·la més de la retícula.
+Tipografies (Google Fonts): **Archivo** condensada (wordmark i titulars), **Geist** (text) i **Geist Mono** (xifres, dates i etiquetes). Accents: `--signal` (#ee6018) per a estat i senyal, i `--metric` (#a0ca92) per a mètriques. Tots els tokens són a `:root` d'`assets/css/styles.css` i el contrast del text és AA.
 
 ## Editar textos i idiomes
 

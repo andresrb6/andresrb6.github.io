@@ -78,7 +78,7 @@
     return C.published().filter(function (c) {
       return c.cv && c.cv.experience === itemId && c.cv.bullet === bulletIndex;
     }).map(function (c) {
-      return '<a class="cv-case-link" href="' + esc(C.url(c)) + '">→ ' + esc(d.portfolio.viewCase) +
+      return '<a class="cv-case-link" href="' + esc(C.url(c)) + '">' + esc(d.portfolio.viewCase) +
         ": " + esc(C.tr(c.shortTitle, currentLang)) + "</a>";
     }).join("");
   }
@@ -94,7 +94,7 @@
         '<div class="cv-role"><h3>' + esc(x.role) + "</h3><p>" + esc(x.company) + " · " + esc(x.place) + "</p></div>" +
         '<div class="cv-body"><ul class="cv-list">' +
           x.bullets.map(function (b, i) { return "<li>" + esc(b) + caseLinks(x.id, i, d) + "</li>"; }).join("") +
-        '</ul><div class="cv-tags">' + x.tags.map(function (t) { return '<span class="pill pill--line">' + esc(t) + "</span>"; }).join("") + "</div></div>" +
+        '</ul><div class="cv-tags">' + x.tags.map(function (t) { return '<span class="pill">' + esc(t) + "</span>"; }).join("") + "</div></div>" +
       "</li>";
     }).join("");
   }
@@ -116,20 +116,46 @@
   }
 
   function renderStack(d) {
-    var box = $("#stack");
-    if (!box) return;
     var s = d.skills;
-    box.innerHTML = s.groups.map(function (g, i) {
-      return '<div class="spec-row">' +
-        '<div class="spec-key"><span class="idx">0' + (i + 1) + "</span><h3>" + esc(g.title) + "</h3></div>" +
-        '<ul class="pills" aria-label="' + esc(s.toolsLabel) + '">' + g.tools.map(function (t) { return '<li class="pill">' + esc(t) + "</li>"; }).join("") + "</ul>" +
-        '<p class="spec-methods"><span class="sr-only">' + esc(s.methodsLabel) + ": </span>" + esc(g.methods) + "</p>" +
-      "</div>";
-    }).join("") +
-    '<div class="spec-row spec-row--soft">' +
-      '<div class="spec-key"><span class="idx">0' + (s.groups.length + 1) + "</span><h3>" + esc(s.softTitle) + "</h3></div>" +
-      '<ul class="pills">' + s.soft.map(function (t) { return '<li class="pill">' + esc(t) + "</li>"; }).join("") + "</ul>" +
-    "</div>";
+    var grid = $("#stack");
+    if (grid) {
+      grid.innerHTML = s.groups.map(function (g, i) {
+        return '<article class="stack-card">' +
+          '<p class="label"><span class="idx">0' + (i + 1) + "</span> — " + esc(g.code) + "</p>" +
+          "<h3>" + esc(g.title) + "</h3>" +
+          '<ul class="stack-tools" aria-label="' + esc(s.toolsLabel) + '">' + g.tools.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" +
+          '<p class="stack-methods"><span class="sr-only">' + esc(s.methodsLabel) + ": </span>" + esc(g.methods) + "</p>" +
+        "</article>";
+      }).join("");
+    }
+    var soft = $("#soft-skills");
+    if (soft) soft.innerHTML = s.soft.map(function (t) { return '<li class="pill">' + esc(t) + "</li>"; }).join("");
+    var mq = $("#marquee");
+    if (mq) {
+      var all = [];
+      s.groups.forEach(function (g) { all = all.concat(g.tools); });
+      var row = all.map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("");
+      mq.innerHTML = row + row; // duplicat per al bucle continu
+    }
+  }
+
+  /* Ajusta el text a l'amplada del contenidor (wordmark Haus Otto i correu) */
+  function fitText() {
+    $$("[data-fit]").forEach(function (el) {
+      if (!el.offsetParent) return;
+      var box = el.parentElement.clientWidth;
+      el.style.display = "inline-block";
+      el.style.fontSize = "100px";
+      var w = el.getBoundingClientRect().width;
+      el.style.display = "";
+      if (w) el.style.fontSize = Math.floor(100 * box / w * 0.99) + "px";
+    });
+    $$("[data-fit-group]").forEach(function (g) {
+      if (!g.offsetParent) return;
+      var lines = $$("span", g), box = g.clientWidth, min = Infinity;
+      lines.forEach(function (l) { l.style.fontSize = "100px"; l.style.display = "inline-block"; min = Math.min(min, 100 * box / l.getBoundingClientRect().width); });
+      lines.forEach(function (l) { l.style.fontSize = Math.floor(min * 0.99) + "px"; l.style.display = ""; });
+    });
   }
 
   function setLang(lang, persist) {
@@ -228,8 +254,22 @@
 
   function initScrollUi() {
     var header = $(".site-header");
-    var onScroll = function () { header.classList.toggle("is-scrolled", window.scrollY > 8); };
-    window.addEventListener("scroll", onScroll, { passive: true });
+    var dots = $(".dots");
+    var ticking = false;
+    // Inverteix capçalera i punts quan queden sobre la zona fosca (Factory)
+    var onScroll = function () {
+      ticking = false;
+      var hb = header.getBoundingClientRect().bottom, mid = window.innerHeight / 2;
+      var overHeader = false, overMid = false;
+      $$(".zone-dark").forEach(function (z) { // es consulta cada cop: a les pàgines de cas es pinten després
+        var r = z.getBoundingClientRect();
+        if (r.top <= hb - 30 && r.bottom > hb - 30) overHeader = true;
+        if (r.top <= mid && r.bottom > mid) overMid = true;
+      });
+      header.classList.toggle("on-dark", overHeader);
+      if (dots) dots.classList.toggle("on-dark", overMid);
+    };
+    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
     onScroll();
 
     if (!("IntersectionObserver" in window)) {
@@ -238,7 +278,7 @@
     }
 
     // Solo enlaces internos de esta página (en las páginas de caso apuntan a ../#...)
-    var links = $$(".nav-desktop a, .drawer-nav a").filter(function (a) { return a.getAttribute("href").charAt(0) === "#"; });
+    var links = $$(".nav-desktop a, .drawer-nav a, .dots a").filter(function (a) { return a.getAttribute("href").charAt(0) === "#"; });
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
@@ -290,5 +330,15 @@
 
     initDrawer();
     initScrollUi();
+
+    fitText();
+    // Es torna a ajustar quan arriba la font condensada (es carrega en diferit)
+    if (document.fonts) {
+      if (document.fonts.ready) document.fonts.ready.then(fitText);
+      if (document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", fitText);
+    }
+    window.addEventListener("load", fitText);
+    var rt;
+    window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(fitText, 120); });
   });
 })();

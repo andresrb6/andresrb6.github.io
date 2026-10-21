@@ -24,7 +24,10 @@ window.CONTENT = {
       "present": "Actualitat",
       "index": "Índex",
       "updated": "Actualitzat",
-      "locationLabel": "Ubicació"
+      "locationLabel": "Ubicació",
+      "sectionsLabel": "Seccions",
+      "viewCaseShort": "Veure cas",
+      "dashboardLabel": "Dashboard de resultats"
     },
     "nav": {
       "about": "Perfil",
@@ -98,7 +101,9 @@ window.CONTENT = {
       "result": "Resultat",
       "kpis": "KPIs de partida",
       "viewCase": "Veure cas complet",
-      "soon": "Cas en preparació"
+      "soon": "Cas en preparació",
+      "pending": "Cas en preparació",
+      "dataTitle": "Resultats en dades"
     },
     "skills": {
       "kicker": "Stack",
@@ -348,7 +353,10 @@ window.CONTENT = {
       "present": "Actualidad",
       "index": "Índice",
       "updated": "Actualizado",
-      "locationLabel": "Ubicación"
+      "locationLabel": "Ubicación",
+      "sectionsLabel": "Secciones",
+      "viewCaseShort": "Ver caso",
+      "dashboardLabel": "Dashboard de resultados"
     },
     "nav": {
       "about": "Perfil",
@@ -422,7 +430,9 @@ window.CONTENT = {
       "result": "Resultado",
       "kpis": "KPIs de partida",
       "viewCase": "Ver caso completo",
-      "soon": "Caso en preparación"
+      "soon": "Caso en preparación",
+      "pending": "Caso en preparación",
+      "dataTitle": "Resultados en datos"
     },
     "skills": {
       "kicker": "Stack",
@@ -672,7 +682,10 @@ window.CONTENT = {
       "present": "Present",
       "index": "Index",
       "updated": "Updated",
-      "locationLabel": "Location"
+      "locationLabel": "Location",
+      "sectionsLabel": "Sections",
+      "viewCaseShort": "View case",
+      "dashboardLabel": "Results dashboard"
     },
     "nav": {
       "about": "Profile",
@@ -746,7 +759,9 @@ window.CONTENT = {
       "result": "Result",
       "kpis": "Baseline KPIs",
       "viewCase": "View full case",
-      "soon": "Case in progress"
+      "soon": "Case in progress",
+      "pending": "Case in progress",
+      "dataTitle": "Results in data"
     },
     "skills": {
       "kicker": "Stack",

@@ -6,7 +6,7 @@
   <title>Andrés Roldán Baldó · Màrqueting Digital</title>
   <meta name="description" content="Andrés Roldán Baldó — Responsable de Màrqueting Digital. Estratègia, analítica, email marketing, continguts i funnel de conversió en entorns B2B i B2C.">
   <meta name="author" content="Andrés Roldán Baldó">
-  <meta name="theme-color" content="#f6f5f1">
+  <meta name="theme-color" content="#ffffff">
   <link rel="canonical" href="https://andresrb6.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Andrés Roldán Baldó">
@@ -17,7 +17,7 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,500..700&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script>document.documentElement.classList.add("js");</script>
   <!-- Datos estructurados (schema.org): describen a la persona para buscadores. Invisibles para el visitante. -->
@@ -69,29 +69,38 @@
   <header class="site-header" id="top">
     <div class="wrap header-inner">
       <a class="brand" href="#hero"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">Andrés Roldán Baldó</span></a>
-
       <nav class="nav-desktop" aria-label="Navegació principal" data-i18n-attr="aria-label:ui.navLabel">
         <ul>
-          <li><a href="#about"><span>01</span><b data-i18n="nav.about">Perfil</b></a></li>
-          <li><a href="#portfolio"><span>02</span><b data-i18n="nav.portfolio">Casos</b></a></li>
-          <li><a href="#skills"><span>03</span><b data-i18n="nav.skills">Stack</b></a></li>
-          <li><a href="#experience"><span>04</span><b data-i18n="nav.experience">Trajectòria</b></a></li>
-          <li><a href="#contact"><span>05</span><b data-i18n="nav.contact">Contacte</b></a></li>
+          <li><a href="#about" data-i18n="nav.about">Perfil</a></li>
+          <li><a href="#portfolio" data-i18n="nav.portfolio">Casos</a></li>
+          <li><a href="#skills" data-i18n="nav.skills">Stack</a></li>
+          <li><a href="#experience" data-i18n="nav.experience">Trajectòria</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contacte</a></li>
         </ul>
       </nav>
-
       <div class="header-actions">
         <div class="lang-switch" role="group" aria-label="Idioma" data-i18n-attr="aria-label:ui.langLabel">
           <button type="button" data-lang="ca" lang="ca" title="Català">CA</button>
           <button type="button" data-lang="es" lang="es" title="Español">ES</button>
           <button type="button" data-lang="en" lang="en" title="English">EN</button>
         </div>
+        <a class="btn btn-dark header-cta" href="#contact"><span data-i18n="nav.contact">Contacte</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <button class="menu-toggle" type="button" aria-controls="drawer" aria-expanded="false" aria-label="Obrir menú" data-i18n-attr="aria-label:ui.openMenu">
           <svg aria-hidden="true"><use href="#i-menu"/></svg>
         </button>
       </div>
     </div>
   </header>
+
+  <!-- Indicadors de secció (Haus Otto) -->
+  <nav class="dots" aria-label="Seccions" data-i18n-attr="aria-label:ui.sectionsLabel">
+    <a href="#hero" aria-label="Andrés Roldán Baldó"></a>
+    <a href="#about" data-i18n-attr="aria-label:nav.about"></a>
+    <a href="#portfolio" data-i18n-attr="aria-label:nav.portfolio"></a>
+    <a href="#skills" data-i18n-attr="aria-label:nav.skills"></a>
+    <a href="#experience" data-i18n-attr="aria-label:nav.experience"></a>
+    <a href="#contact" data-i18n-attr="aria-label:nav.contact"></a>
+  </nav>
 
   <!-- Calaix mòbil -->
   <div class="drawer-overlay" data-drawer-close hidden></div>
@@ -112,47 +121,52 @@
       </ul>
     </nav>
     <div class="drawer-foot">
-      <p class="label" data-i18n="ui.langLabel">Idioma</p>
       <div class="lang-switch lang-switch--lg" role="group" aria-label="Idioma" data-i18n-attr="aria-label:ui.langLabel">
         <button type="button" data-lang="ca" lang="ca">Català</button>
         <button type="button" data-lang="es" lang="es">Español</button>
         <button type="button" data-lang="en" lang="en">English</button>
       </div>
-      <a class="btn btn-outline btn-block" href="assets/docs/CV_Andres_Roldan_ES_2026.pdf" download><svg aria-hidden="true"><use href="#i-download"/></svg><span data-i18n="hero.ctaCv">Descarregar CV</span></a>
+      <a class="btn btn-light btn-block" href="assets/docs/CV_Andres_Roldan_ES_2026.pdf" download><span data-i18n="hero.ctaCv">Descarregar CV</span><svg aria-hidden="true"><use href="#i-download"/></svg></a>
     </div>
   </aside>
 
   <main id="main">
-    <!-- 00 · HERO -->
-    <section class="hero" id="hero" aria-labelledby="hero-name">
+    <!-- HERO · Haus Otto -->
+    <section class="hero zone-light" id="hero">
       <div class="wrap hero-inner">
-        <div class="hero-grid-bg" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
         <div class="hero-meta">
           <span class="label" data-i18n="hero.kicker">CV / Portafoli — 2026</span>
-          <span class="label" data-i18n="hero.location">Terrassa, Barcelona</span>
-          <span class="label live"><span class="dot dot--live" aria-hidden="true"></span><span data-i18n="hero.status">Actualment: Responsable de Màrqueting Digital a Tecnotrip</span></span>
+          <span class="label live"><span class="pulse" aria-hidden="true"></span><span data-i18n="hero.status">Actualment: Responsable de Màrqueting Digital a Tecnotrip</span></span>
         </div>
-        <h1 class="hero-name" id="hero-name"><span>Andrés Roldán</span><span class="hero-name-last">Baldó</span></h1>
-        <div class="hero-bottom">
-          <div class="hero-copy">
+        <div class="hero-intro">
+          <div>
             <p class="hero-role" data-i18n="hero.role">Màrqueting Digital, Negoci i Estratègia Tecnològica</p>
             <p class="hero-lead" data-i18n="hero.lead"></p>
           </div>
           <div class="hero-ctas">
-            <a class="btn btn-primary" href="#portfolio"><span data-i18n="hero.ctaCases">Veure casos</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="btn btn-outline" href="assets/docs/CV_Andres_Roldan_ES_2026.pdf" download><svg aria-hidden="true"><use href="#i-download"/></svg><span data-i18n="hero.ctaCv">Descarregar CV</span></a>
+            <a class="btn btn-dark" href="#portfolio"><span data-i18n="hero.ctaCases">Veure casos</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="assets/docs/CV_Andres_Roldan_ES_2026.pdf" download><span data-i18n="hero.ctaCv">Descarregar CV</span><svg aria-hidden="true"><use href="#i-download"/></svg></a>
           </div>
         </div>
-        <ul class="hero-facts" id="hero-facts"></ul>
+        <h1 class="wordmark display" aria-label="Andrés Roldán Baldó">
+          <span class="wm wm-full" data-fit aria-hidden="true">Andrés Roldán Baldó</span>
+          <span class="wm wm-stack" data-fit-group aria-hidden="true"><span>Andrés</span><span>Roldán</span><span>Baldó</span></span>
+        </h1>
+        <div class="hero-base">
+          <ul class="hero-facts" id="hero-facts"></ul>
+        </div>
       </div>
     </section>
 
     <!-- 01 · PERFIL -->
-    <section class="section" id="about" aria-labelledby="about-title">
+    <section class="section zone-light" id="about" aria-labelledby="about-h">
       <div class="wrap">
-        <div class="section-head">
-          <p class="label"><span class="idx">[01]</span><span data-i18n="about.kicker">Perfil</span></p>
-          <h2 class="section-title reveal" id="about-title" data-i18n="about.title">Analitzar, detectar, prioritzar i executar.</h2>
+        <div class="section-top">
+          <h2 class="display reveal" id="about-h" data-i18n="nav.about">Perfil</h2>
+          <div class="section-top-meta">
+            <p class="label"><span class="idx">[01]</span> <span data-i18n="hero.location">Terrassa, Barcelona</span></p>
+            <h3 data-i18n="about.title">Analitzar, detectar, prioritzar i executar.</h3>
+          </div>
         </div>
         <div class="profile">
           <div class="profile-text reveal">
@@ -164,65 +178,88 @@
       </div>
     </section>
 
-    <!-- 02 · CASOS (dades a data/casos.json) -->
-    <section class="section" id="portfolio" aria-labelledby="cases-title">
+    <!-- 02 + 03 · ZONA DE DADES · Factory.ai -->
+    <div class="zone-dark" data-zone="dark">
+      <section class="section" id="portfolio" aria-labelledby="cases-h">
+        <div class="wrap">
+          <div class="section-top">
+            <h2 class="display reveal" id="cases-h" data-i18n="nav.portfolio">Casos</h2>
+            <div class="section-top-meta">
+              <p class="label"><span class="idx">[02]</span> <span data-i18n="portfolio.dataTitle">Resultats en dades</span></p>
+              <h3 data-i18n="portfolio.title">Casos i projectes</h3>
+              <p data-i18n="portfolio.intro"></p>
+            </div>
+          </div>
+          <div id="dashboard"></div>
+          <div class="cases-head"><p class="label" data-i18n="portfolio.title">Casos i projectes</p><p class="label" id="cases-count"></p></div>
+          <div class="cases" id="projects" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section" id="skills" aria-labelledby="stack-h">
+        <div class="wrap">
+          <div class="section-top">
+            <h2 class="display reveal" id="stack-h" data-i18n="nav.skills">Stack</h2>
+            <div class="section-top-meta">
+              <p class="label"><span class="idx">[03]</span> MarTech · CRM · AI</p>
+              <h3 data-i18n="skills.title">MarTech, CRM &amp; AI Stack</h3>
+              <p data-i18n="skills.intro"></p>
+            </div>
+          </div>
+        </div>
+        <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+        <div class="wrap">
+          <div class="stack-grid" id="stack"></div>
+          <div class="soft-row"><p class="label" data-i18n="skills.softTitle">Soft skills</p><ul class="pills" id="soft-skills"></ul></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 04 · TRAJECTÒRIA · Haus Otto -->
+    <section class="section zone-light" id="experience" aria-labelledby="cv-h">
       <div class="wrap">
-        <div class="section-head">
-          <p class="label"><span class="idx">[02]</span><span data-i18n="portfolio.kicker">Casos</span></p>
-          <h2 class="section-title reveal" id="cases-title" data-i18n="portfolio.title">Casos i projectes</h2>
-          <p class="section-intro" data-i18n="portfolio.intro"></p>
+        <div class="section-top">
+          <h2 class="display reveal" id="cv-h" data-i18n="nav.experience">Trajectòria</h2>
+          <div class="section-top-meta">
+            <p class="label"><span class="idx">[04]</span> CV</p>
+            <h3 data-i18n="experience.title">Experiència i formació</h3>
+          </div>
         </div>
-        <div class="cases" id="projects" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <!-- 03 · STACK -->
-    <section class="section" id="skills" aria-labelledby="stack-title">
-      <div class="wrap stack-pad">
-        <div class="section-head">
-          <p class="label"><span class="idx">[03]</span><span data-i18n="skills.kicker">Stack</span></p>
-          <h2 class="section-title reveal" id="stack-title" data-i18n="skills.title">MarTech, CRM &amp; AI Stack</h2>
-          <p class="section-intro" data-i18n="skills.intro"></p>
-        </div>
-        <div class="spec" id="stack"></div>
-      </div>
-    </section>
-
-    <!-- 04 · TRAJECTÒRIA -->
-    <section class="section" id="experience" aria-labelledby="cv-title">
-      <div class="wrap cv-pad">
-        <div class="section-head">
-          <p class="label"><span class="idx">[04]</span><span data-i18n="experience.kicker">Trajectòria</span></p>
-          <h2 class="section-title reveal" id="cv-title" data-i18n="experience.title">Experiència i formació</h2>
-        </div>
-        <div class="cv-block">
-          <div class="cv-subhead"><h3 class="label" data-i18n="experience.work">Experiència</h3></div>
-          <ol id="timeline"></ol>
-        </div>
+        <div class="cv-head"><h3 class="label" data-i18n="experience.work">Experiència</h3></div>
+        <ol id="timeline"></ol>
         <div class="cv-split">
           <div>
-            <div class="cv-subhead"><h3 class="label" data-i18n="experience.educationTitle">Formació</h3></div>
+            <div class="cv-head"><h3 class="label" data-i18n="experience.educationTitle">Formació</h3></div>
             <ol id="education"></ol>
           </div>
           <div>
-            <div class="cv-subhead"><h3 class="label" data-i18n="experience.langsTitle">Idiomes</h3></div>
+            <div class="cv-head"><h3 class="label" data-i18n="experience.langsTitle">Idiomes</h3></div>
             <ul class="lang-levels" id="lang-levels"></ul>
-            <a class="btn btn-outline btn-block cv-download" href="assets/docs/CV_Andres_Roldan_ES_2026.pdf" download><svg aria-hidden="true"><use href="#i-download"/></svg><span data-i18n="ui.downloadCvLong">Descarregar CV (PDF)</span></a>
+            <a class="btn btn-ghost btn-block cv-download" href="assets/docs/CV_Andres_Roldan_ES_2026.pdf" download><span data-i18n="ui.downloadCvLong">Descarregar CV (PDF)</span><svg aria-hidden="true"><use href="#i-download"/></svg></a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 05 · CONTACTE -->
-    <section class="section" id="contact" aria-labelledby="contact-title">
-      <div class="wrap contact">
-        <div class="section-head">
-          <p class="label"><span class="idx">[05]</span><span data-i18n="contact.kicker">Contacte</span></p>
-          <h2 class="section-title reveal" id="contact-title" data-i18n="contact.title">Connectem?</h2>
+    <section class="section zone-light" id="contact" aria-labelledby="contact-h">
+      <div class="wrap">
+        <div class="section-top">
+          <h2 class="display reveal" id="contact-h" data-i18n="nav.contact">Contacte</h2>
+          <div class="section-top-meta">
+            <p class="label"><span class="idx">[05]</span> Email · LinkedIn</p>
+            <h3 data-i18n="contact.title">Connectem?</h3>
+          </div>
         </div>
-        <a class="contact-email" href="mailto:andresroldan.rb6@gmail.com">andresroldan.rb6@gmail.com</a>
+        <a class="contact-mail" href="mailto:andresroldan.rb6@gmail.com"><span class="wm" data-fit>andresroldan.rb6@gmail.com</span></a>
         <div class="contact-side">
-          <p class="contact-text" data-i18n="contact.text"></p>
+          <div>
+            <p class="contact-text" data-i18n="contact.text"></p>
+            <div class="contact-ctas">
+              <a class="btn btn-dark" href="mailto:andresroldan.rb6@gmail.com"><span data-i18n="contact.email">Escriu-me</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn-ghost" href="https://www.linkedin.com/in/andres-roldan-baldo-marketing-empresa" target="_blank" rel="noopener">LinkedIn<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
           <ul class="contact-grid">
             <li><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/andres-roldan-baldo-marketing-empresa" target="_blank" rel="noopener">in/andres-roldan-baldo-marketing-empresa</a></li>
             <li><span class="label">Email</span><a href="mailto:andresroldan.rb6@gmail.com">andresroldan.rb6@gmail.com</a></li>
@@ -235,10 +272,35 @@
   </main>
 
   <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <p>© <span id="year">2026</span> Andrés Roldán Baldó</p>
-      <p data-i18n="ui.footer">Disseny i codi a mida · GitHub Pages</p>
-      <a href="#top" data-i18n="ui.toTop">Tornar a dalt ↑</a>
+    <div class="wrap">
+      <div class="footer-cols">
+        <div class="footer-brand"><p class="display">Andrés Roldán Baldó</p></div>
+        <div>
+          <h4 data-i18n="ui.index">Índex</h4>
+          <ul>
+            <li><a href="#about" data-i18n="nav.about">Perfil</a></li>
+            <li><a href="#portfolio" data-i18n="nav.portfolio">Casos</a></li>
+            <li><a href="#skills" data-i18n="nav.skills">Stack</a></li>
+            <li><a href="#experience" data-i18n="nav.experience">Trajectòria</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="nav.contact">Contacte</h4>
+          <ul>
+            <li><a href="mailto:andresroldan.rb6@gmail.com">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/andres-roldan-baldo-marketing-empresa" target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>CV</h4>
+          <ul><li><a href="assets/docs/CV_Andres_Roldan_ES_2026.pdf" download data-i18n="ui.downloadCv">Descarregar CV</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year">2026</span> Andrés Roldán Baldó</p>
+        <p data-i18n="ui.footer">Disseny i codi a mida · GitHub Pages</p>
+        <a href="#top" data-i18n="ui.toTop">Tornar a dalt ↑</a>
+      </div>
     </div>
   </footer>
 

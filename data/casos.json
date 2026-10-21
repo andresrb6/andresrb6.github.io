@@ -618,5 +618,134 @@
       }
     }
   ],
-  "_fuentes": "seo-geo-ga4: Auditoría SEO técnica y on-page, Auditoría Search Console (16 meses) y Auditoría GEO y AI Search de tecnotrip.com, oct 2026. Solo se publican porcentajes y ratios; sin cifras absolutas, nombres internos, proveedores ni competidores."
+  "_fuentes": "seo-geo-ga4: Auditoría SEO técnica y on-page, Auditoría Search Console (16 meses) y Auditoría GEO y AI Search de tecnotrip.com, oct 2026. Solo se publican porcentajes y ratios; sin cifras absolutas, nombres internos, proveedores ni competidores.",
+  "dashboard": {
+    "case": "seo-geo-ga4",
+    "window": "tecnotrip.com — seo · geo baseline",
+    "status": {
+      "ca": "Línia base",
+      "es": "Línea base",
+      "en": "Baseline"
+    },
+    "date": "OCT 2026",
+    "tiles": [
+      {
+        "label": {
+          "ca": "Clics orgànics de marca",
+          "es": "Clics orgánicos de marca",
+          "en": "Branded organic clicks"
+        },
+        "value": 96,
+        "unit": "%",
+        "bar": 96,
+        "tone": "signal",
+        "note": {
+          "ca": "de les consultes visibles a Search Console",
+          "es": "de las consultas visibles en Search Console",
+          "en": "of visible queries in Search Console"
+        }
+      },
+      {
+        "label": {
+          "ca": "Share of voice a l'IA",
+          "es": "Share of voice en IA",
+          "en": "AI share of voice"
+        },
+        "value": 35,
+        "unit": "%",
+        "bar": 35,
+        "tone": "metric",
+        "note": {
+          "ca": "1a marca citada sense marca · 4 assistents",
+          "es": "1.ª marca citada sin marca · 4 asistentes",
+          "en": "#1 unbranded brand · 4 assistants"
+        }
+      },
+      {
+        "label": {
+          "ca": "Salut SEO tècnica",
+          "es": "Salud SEO técnica",
+          "en": "Technical SEO health"
+        },
+        "value": 52,
+        "unit": "/100",
+        "bar": 52,
+        "tone": "signal",
+        "note": {
+          "ca": "criteri d'auditoria",
+          "es": "criterio de auditoría",
+          "en": "audit score"
+        }
+      },
+      {
+        "label": {
+          "ca": "Impressions vs. any anterior",
+          "es": "Impresiones vs. año anterior",
+          "en": "Impressions vs. previous year"
+        },
+        "value": -44,
+        "unit": "%",
+        "bar": 44,
+        "tone": "signal",
+        "note": {
+          "ca": "després del canvi de web",
+          "es": "tras el cambio de web",
+          "en": "after the site relaunch"
+        }
+      }
+    ],
+    "charts": [
+      {
+        "title": {
+          "ca": "Share of voice IA · per idioma",
+          "es": "Share of voice IA · por idioma",
+          "en": "AI share of voice · by language"
+        },
+        "bars": [
+          {
+            "label": "ES",
+            "value": 50
+          },
+          {
+            "label": "EN",
+            "value": 28
+          },
+          {
+            "label": "FR",
+            "value": 17
+          }
+        ]
+      },
+      {
+        "title": {
+          "ca": "Share of voice IA · per assistent",
+          "es": "Share of voice IA · por asistente",
+          "en": "AI share of voice · by assistant"
+        },
+        "bars": [
+          {
+            "label": "ChatGPT",
+            "value": 70
+          },
+          {
+            "label": "Gemini",
+            "value": 30
+          },
+          {
+            "label": "Perplexity",
+            "value": 30
+          },
+          {
+            "label": "Claude",
+            "value": 11
+          }
+        ]
+      }
+    ],
+    "source": {
+      "ca": "Font: auditories SEO tècnica, Search Console i GEO de tecnotrip.com (oct 2026). Només percentatges; sense xifres absolutes.",
+      "es": "Fuente: auditorías SEO técnica, Search Console y GEO de tecnotrip.com (oct 2026). Solo porcentajes; sin cifras absolutas.",
+      "en": "Source: technical SEO, Search Console and GEO audits of tecnotrip.com (Oct 2026). Percentages only; no absolute figures."
+    }
+  }
 }
