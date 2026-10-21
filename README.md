@@ -44,15 +44,32 @@ Los datos estructurados (schema.org) de `index.html` describen a la persona (`Pe
 
 > `casos.json` se carga con `fetch()`: funciona en GitHub Pages y con un servidor local (ver abajo), no abriendo `index.html` con doble clic.
 
+## Sistema de disseny: Raw Materials
+
+Zine sobre fons crema (`#f4e9e1`) amb display gegant i **un color per capítol**. Tots els tokens (colors, fonts, escala, radis, espaiats) són a `:root` d'`assets/css/styles.css`; cada secció rep el seu tema amb una classe `.sec-*`.
+
+| Capítol | Color | Fons | Text sobre el color |
+|---|---|---|---|
+| 01 Sobre mi | Ember `#ff3d00` | Blush | tinta |
+| 02 Experiència | Cobalt `#2835f8` | Sky Tint | crema |
+| 03 Projectes | Violet `#5900cc` | Celadon | crema |
+| 04 Competències | Forest `#008163` | Sage | blanc |
+| 05 Contacte | Crimson `#ff003d` | Sand | tinta |
+
+- Fonts: **General Sans** 400/500 i **Clash Display** 200/600 (Fontshare), **JetBrains Mono** 400 (Google Fonts).
+- Sense ombres, blur ni degradats. Radi 16px; pills 99px; marc de la foto 187px.
+- Ember, Forest i Crimson no s'usen mai com a color de text (no arriben a AA); només com a fons, vores i barres.
+- Navegació: targetes numerades a l'esquerra (escriptori) i al menú (mòbil); barra de progrés i comptador `01/05` a baix.
+
 ## Afegir la foto personal
 
-A `index.html`, substitueix el bloc `<figure class="photo-placeholder">…</figure>` per:
+A `index.html`, substitueix el bloc `<div class="photo-placeholder">…</div>` per:
 
 ```html
-<img class="hero-photo" src="assets/img/andres-roldan.webp" alt="Andrés Roldán Baldó" width="760" height="950">
+<img class="photo" src="assets/img/andres-roldan.webp" alt="Andrés Roldán Baldó" width="760" height="950">
 ```
 
-Format recomanat: vertical 4:5, 760×950 px com a mínim, WebP o JPG optimitzat (< 200 KB).
+Fa servir el mateix marc (forma de 187px). Format recomanat: vertical 4:5, 760×950 px com a mínim, WebP o JPG optimitzat (< 200 KB).
 
 ## Editar textos i idiomes
 
