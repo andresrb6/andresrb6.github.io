@@ -7,7 +7,7 @@ HTML, CSS i JavaScript sense dependències ni procés de build. Està pensada pe
 
 ```
 .
-├── index.html               # One-page: inici, sobre mi, experiència, projectes, competències, contacte
+├── index.html               # One-page: hero, perfil, casos, stack, trajectòria, contacte
 ├── casos/                   # Una pàgina per cas d'estudi (mateix layout)
 │   └── seo-geo-ga4.html
 ├── 404.html                 # Pàgina d'error
@@ -17,10 +17,10 @@ HTML, CSS i JavaScript sense dependències ni procés de build. Està pensada pe
 │   ├── js/content.js        # Textos de la web en CA / ES / EN
 │   ├── js/main.js           # Idiomes, menú mòbil, CV, animacions
 │   ├── js/cases-data.js     # Carrega data/casos.json
-│   ├── js/projects-hub.js   # Targetes de "Projectes" a la one-page
+│   ├── js/projects-hub.js   # Targetes de "Casos" a la one-page
 │   ├── js/case.js           # Plantilla de la pàgina de cas
 │   ├── docs/                # CV en PDF descarregable
-│   └── img/                 # Favicon, foto personal i imatges de projectes
+│   └── img/                 # Favicon i imatges de projectes
 └── data/casos.json          # Contingut dels casos d'estudi
 ```
 
@@ -44,15 +44,17 @@ Los datos estructurados (schema.org) de `index.html` describen a la persona (`Pe
 
 > `casos.json` se carga con `fetch()`: funciona en GitHub Pages y con un servidor local (ver abajo), no abriendo `index.html` con doble clic.
 
-## Afegir la foto personal
+## Sistema de disseny
 
-A `index.html`, substitueix el bloc `<figure class="photo-placeholder">…</figure>` per:
+Fusió de tres sistemes de referència, amb una jerarquia fixa:
 
-```html
-<img class="hero-photo" src="assets/img/andres-roldan.webp" alt="Andrés Roldán Baldó" width="760" height="950">
-```
+- **Haus Otto — macro-grid i estètica principal.** Fons blanc trencat (`--paper`), text negre, retícula visible de 12 columnes amb línies d'1px, nom a escala monumental, sense ombres ni gradients, cantonades rectes a les targetes.
+- **Factory.ai — casos.** Targetes amb índex `[01]`, estat, repte / execució / resultat i bloc de 3 KPIs en monoespaiada.
+- **Frontier AI — micro-components.** Pills (`9999px`), botons de 6px (negre ple o contorn), fletxes en l'accent i tipografia mono per a xifres, dates i etiquetes.
 
-Format recomanat: vertical 4:5, 760×950 px com a mínim, WebP o JPG optimitzat (< 200 KB).
+Tipografies: **Geist** (text) i **Geist Mono** (xifres, dates i etiquetes), de Google Fonts. Un sol accent, `--accent` (#e8560f), només per a elements que no són text; per a text en accent s'usa `--accent-ink` (#b0400a, contrast AA). Tots els tokens són a `:root` d'`assets/css/styles.css`.
+
+Sense foto: el disseny és tipogràfic. Si se n'afegeix una, ha d'entrar com una cel·la més de la retícula.
 
 ## Editar textos i idiomes
 

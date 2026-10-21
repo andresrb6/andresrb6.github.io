@@ -59,7 +59,7 @@
     var ul = $("#hero-facts");
     if (!ul) return;
     ul.innerHTML = d.hero.facts.map(function (f) {
-      return "<li><strong>" + esc(f.value) + "</strong><span>" + esc(f.label) + "</span></li>";
+      return '<li><span class="label">' + esc(f.k) + "</span><strong>" + esc(f.v) + "</strong><small>" + esc(f.d) + "</small></li>";
     }).join("");
   }
 
@@ -67,20 +67,19 @@
     var ol = $("#method-list");
     if (!ol) return;
     ol.innerHTML = d.about.method.map(function (m, i) {
-      return '<li class="method-step reveal is-visible"><span class="method-num">0' + (i + 1) + "</span>" +
-        "<div><h3>" + esc(m.title) + "</h3><p>" + esc(m.text) + "</p></div></li>";
+      return '<li><span class="idx">0' + (i + 1) + "</span><h3>" + esc(m.title) + "</h3><p>" + esc(m.text) + "</p></li>";
     }).join("");
   }
 
-  // Enlaces "Ver caso completo" bajo los logros del CV (solo casos publicados)
+  // Enllaços "Veure cas complet" sota els assoliments del CV (només casos publicats)
   function caseLinks(itemId, bulletIndex, d) {
     var C = window.CasesData;
     if (!C || !itemId) return "";
     return C.published().filter(function (c) {
       return c.cv && c.cv.experience === itemId && c.cv.bullet === bulletIndex;
     }).map(function (c) {
-      return '<a class="xp-case-link" href="' + esc(C.url(c)) + '">' + esc(d.portfolio.viewCase) +
-        ": " + esc(C.tr(c.shortTitle, currentLang)) + ' <span aria-hidden="true">→</span></a>';
+      return '<a class="cv-case-link" href="' + esc(C.url(c)) + '">→ ' + esc(d.portfolio.viewCase) +
+        ": " + esc(C.tr(c.shortTitle, currentLang)) + "</a>";
     }).join("");
   }
 
@@ -88,44 +87,49 @@
     var ol = $("#timeline");
     if (!ol) return;
     ol.innerHTML = d.experience.items.map(function (x) {
-      var end = x.end || d.ui.present;
       var current = !x.end;
-      return '<li class="xp' + (current ? " xp--current" : "") + '"' + (x.id ? ' id="' + esc(x.id) + '"' : "") + ">" +
-        '<span class="xp-dot" aria-hidden="true"></span>' +
-        '<div class="xp-card">' +
-          '<div class="xp-head">' +
-            "<div><h3>" + esc(x.role) + "</h3>" +
-            '<p class="xp-company">' + esc(x.company) + ' <span>· ' + esc(x.place) + "</span></p></div>" +
-            '<p class="xp-date">' + (current ? '<span class="live-dot" aria-hidden="true"></span>' : "") + esc(x.start) + " – " + esc(end) + "</p>" +
-          "</div>" +
-          '<ul class="xp-list">' + x.bullets.map(function (b, i) { return "<li>" + esc(b) + caseLinks(x.id, i, d) + "</li>"; }).join("") + "</ul>" +
-          '<div class="xp-tags">' + x.tags.map(function (t) { return '<span class="tag">' + esc(t) + "</span>"; }).join("") + "</div>" +
-        "</div></li>";
+      return '<li class="cv-row"' + (x.id ? ' id="' + esc(x.id) + '"' : "") + ">" +
+        '<p class="cv-date">' + (current ? '<span class="dot dot--live" aria-hidden="true"></span>' : "") +
+          esc(x.start) + " – " + esc(x.end || d.ui.present) + "</p>" +
+        '<div class="cv-role"><h3>' + esc(x.role) + "</h3><p>" + esc(x.company) + " · " + esc(x.place) + "</p></div>" +
+        '<div class="cv-body"><ul class="cv-list">' +
+          x.bullets.map(function (b, i) { return "<li>" + esc(b) + caseLinks(x.id, i, d) + "</li>"; }).join("") +
+        '</ul><div class="cv-tags">' + x.tags.map(function (t) { return '<span class="pill pill--line">' + esc(t) + "</span>"; }).join("") + "</div></div>" +
+      "</li>";
     }).join("");
   }
 
-  function renderLangs(d) {
-    var ul = $("#lang-levels");
-    if (!ul) return;
-    ul.innerHTML = d.education.langs.map(function (l) {
-      return '<li><div class="lang-row"><span>' + esc(l.name) + "</span><em>" + esc(l.level) + "</em></div>" +
-        '<span class="bar" aria-hidden="true"><span style="width:' + Number(l.pct) + '%"></span></span></li>';
-    }).join("");
-  }
-
-  function renderSkills(d) {
-    var grid = $("#skills-grid");
-    if (grid) {
-      grid.innerHTML = d.skills.groups.map(function (g) {
-        return '<article class="skill-card reveal is-visible">' +
-          '<span class="skill-icon" aria-hidden="true"><svg><use href="#i-' + esc(g.icon) + '"/></svg></span>' +
-          "<h3>" + esc(g.title) + '</h3><ul class="chips">' +
-          g.items.map(function (s) { return '<li class="chip">' + esc(s) + "</li>"; }).join("") +
-          "</ul></article>";
+  function renderEducation(d) {
+    var ol = $("#education");
+    if (ol) {
+      ol.innerHTML = d.education.items.map(function (e) {
+        return '<li class="cv-row"><p class="cv-date">' + esc(e.period) + '</p><div class="cv-role"><h3>' + esc(e.title) + "</h3><p>" + esc(e.place) + "</p></div></li>";
       }).join("");
     }
-    var soft = $("#soft-skills");
-    if (soft) soft.innerHTML = d.skills.soft.map(function (s) { return '<li class="chip">' + esc(s) + "</li>"; }).join("");
+    var ul = $("#lang-levels");
+    if (ul) {
+      ul.innerHTML = d.education.langs.map(function (l) {
+        return "<li><span>" + esc(l.name) + '</span><span class="label">' + esc(l.level) + "</span>" +
+          '<span class="bar" aria-hidden="true"><span style="width:' + Number(l.pct) + '%"></span></span></li>';
+      }).join("");
+    }
+  }
+
+  function renderStack(d) {
+    var box = $("#stack");
+    if (!box) return;
+    var s = d.skills;
+    box.innerHTML = s.groups.map(function (g, i) {
+      return '<div class="spec-row">' +
+        '<div class="spec-key"><span class="idx">0' + (i + 1) + "</span><h3>" + esc(g.title) + "</h3></div>" +
+        '<ul class="pills" aria-label="' + esc(s.toolsLabel) + '">' + g.tools.map(function (t) { return '<li class="pill">' + esc(t) + "</li>"; }).join("") + "</ul>" +
+        '<p class="spec-methods"><span class="sr-only">' + esc(s.methodsLabel) + ": </span>" + esc(g.methods) + "</p>" +
+      "</div>";
+    }).join("") +
+    '<div class="spec-row spec-row--soft">' +
+      '<div class="spec-key"><span class="idx">0' + (s.groups.length + 1) + "</span><h3>" + esc(s.softTitle) + "</h3></div>" +
+      '<ul class="pills">' + s.soft.map(function (t) { return '<li class="pill">' + esc(t) + "</li>"; }).join("") + "</ul>" +
+    "</div>";
   }
 
   function setLang(lang, persist) {
@@ -144,8 +148,8 @@
     renderHeroFacts(d);
     renderMethod(d);
     renderTimeline(d);
-    renderLangs(d);
-    renderSkills(d);
+    renderEducation(d);
+    renderStack(d);
     document.dispatchEvent(new CustomEvent("langchange", { detail: { lang: lang } }));
 
     $$("[data-lang]").forEach(function (b) {
@@ -174,12 +178,15 @@
       requestAnimationFrame(function () {
         drawer.classList.add("is-open");
         overlay.classList.add("is-open");
+        // El focus entra al calaix quan ja és visible (després del canvi de visibilitat)
+        setTimeout(function () {
+          var f = focusables();
+          if (f.length) f[0].focus();
+        }, 50);
       });
       drawer.setAttribute("aria-hidden", "false");
       toggle.setAttribute("aria-expanded", "true");
       document.body.classList.add("no-scroll");
-      var f = focusables();
-      if (f.length) f[0].focus();
     }
 
     function close(returnFocus) {
