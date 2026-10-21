@@ -77,14 +77,17 @@
       return '<li class="' + (a.done ? "is-done" : "is-planned") + '"><span>' + esc(D.tr(a.text, lang)) + "</span>" + tag + "</li>";
     }).join("");
 
+    var hasTarget = (c.kpis || []).some(function (k) { return k.target; });
     var rows = (c.kpis || []).map(function (k) {
       return '<tr><th scope="row">' + esc(D.tr(k.label, lang)) + "</th><td>" + D.value(k.before, lang, t) +
-        '</td><td class="kpi-arrow" aria-hidden="true">→</td><td>' + D.value(k.after, lang, t) + "</td></tr>";
+        '</td><td class="kpi-arrow" aria-hidden="true">→</td><td>' + D.value(k.after, lang, t) + "</td>" +
+        (hasTarget ? "<td>" + (k.target ? esc(k.target) : "—") + "</td>" : "") + "</tr>";
     }).join("");
     var table = '<div class="kpi-table-wrap" tabindex="0" role="region" aria-labelledby="kpi-caption"><table class="kpi-table">' +
       '<caption id="kpi-caption">' + esc(t.tableCaption) + "</caption>" +
       '<thead><tr><th scope="col">' + esc(t.kpi) + '</th><th scope="col">' + esc(t.before) +
-      '</th><td class="kpi-arrow" aria-hidden="true"></td><th scope="col">' + esc(t.after) + "</th></tr></thead>" +
+      '</th><td class="kpi-arrow" aria-hidden="true"></td><th scope="col">' + esc(t.after) + "</th>" +
+      (hasTarget ? '<th scope="col">' + esc(t.target || "") + "</th>" : "") + "</tr></thead>" +
       "<tbody>" + rows + "</tbody></table></div>" +
       '<p class="case-note">' + esc(t.dataNote) + "</p>";
 
@@ -135,6 +138,7 @@
     var desc = document.querySelector('meta[name="description"]');
     if (desc && c.subtitle) desc.setAttribute("content", D.tr(c.subtitle, lang));
     mount.innerHTML = hero(c, lang, t) + body(c, lang, t) + pager(c, lang, t);
+    if (window.Site && window.Site.fit) window.Site.fit();
   }
 
   function update() {

@@ -128,6 +128,21 @@
     if (soft) soft.innerHTML = d.skills.soft.map(function (s) { return '<li class="chip">' + esc(s) + "</li>"; }).join("");
   }
 
+  // Titulars display: si una paraula no hi cap, es redueix la mida fins que hi cap
+  // (mai es parteix una paraula ni es talla). Es recalcula amb l'idioma, les fonts i la mida de pantalla.
+  var FIT = ".hero-title, .section-head h2, .contact-copy h2, .case-title, .case-section h2";
+  function fitHeadings() {
+    $$(FIT).forEach(function (el) {
+      el.style.fontSize = "";
+      if (!el.clientWidth) return;
+      var size = parseFloat(getComputedStyle(el).fontSize), guard = 0;
+      while (el.scrollWidth > el.clientWidth + 1 && size > 28 && guard++ < 80) {
+        size -= 2;
+        el.style.fontSize = size + "px";
+      }
+    });
+  }
+
   function setLang(lang, persist) {
     if (LANGS.indexOf(lang) === -1) lang = DEFAULT_LANG;
     currentLang = lang;
@@ -154,6 +169,7 @@
       b.setAttribute("aria-pressed", on);
     });
     if (persist) storageSet(lang);
+    fitHeadings();
   }
 
   /* ---------- Drawer (mòbil) ---------- */
@@ -269,7 +285,7 @@
     $$(".reveal:not(.is-visible)").forEach(function (el) { reveal.observe(el); });
   }
 
-  window.Site = { lang: function () { return currentLang; }, dict: dict };
+  window.Site = { lang: function () { return currentLang; }, dict: dict, fit: fitHeadings };
 
   /* ---------- Init ---------- */
 
@@ -296,5 +312,13 @@
 
     initDrawer();
     initScrollUi();
+
+    if (document.fonts) {
+      if (document.fonts.ready) document.fonts.ready.then(fitHeadings);
+      if (document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", fitHeadings);
+    }
+    window.addEventListener("load", fitHeadings);
+    var rt;
+    window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(fitHeadings, 120); });
   });
 })();

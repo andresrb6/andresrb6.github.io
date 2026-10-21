@@ -132,6 +132,7 @@ window.CONTENT = {
       intro: "Projectes que lidero com a Responsable de Màrqueting Digital a Tecnotrip. Cadascun segueix la mateixa trajectòria: auditoria, execució i mesura.",
       problem: "Problema",
       result: "Resultat",
+      execution: "Execució",
       viewCase: "Veure cas complet",
       soon: "Cas en preparació"
     },
@@ -158,6 +159,7 @@ window.CONTENT = {
       kpi: "KPI",
       before: "Abans",
       after: "Després",
+      target: "Objectiu",
       dataNote: "Les dades de Tecnotrip es mostren anonimitzades o com a variació percentual.",
       learningsAndNext: "Aprenentatges i següents passos",
       learnings: "Aprenentatges",
@@ -309,6 +311,7 @@ window.CONTENT = {
       intro: "Proyectos que lidero como Responsable de Marketing Digital en Tecnotrip. Cada uno sigue la misma trayectoria: auditoría, ejecución y medición.",
       problem: "Problema",
       result: "Resultado",
+      execution: "Ejecución",
       viewCase: "Ver caso completo",
       soon: "Caso en preparación"
     },
@@ -335,6 +338,7 @@ window.CONTENT = {
       kpi: "KPI",
       before: "Antes",
       after: "Después",
+      target: "Objetivo",
       dataNote: "Los datos de Tecnotrip se muestran anonimizados o como variación porcentual.",
       learningsAndNext: "Aprendizajes y siguientes pasos",
       learnings: "Aprendizajes",
@@ -486,6 +490,7 @@ window.CONTENT = {
       intro: "Projects I lead as Digital Marketing Manager at Tecnotrip. Each one follows the same path: audit, execution and measurement.",
       problem: "Problem",
       result: "Result",
+      execution: "Execution",
       viewCase: "View full case",
       soon: "Case in progress"
     },
@@ -512,6 +517,7 @@ window.CONTENT = {
       kpi: "KPI",
       before: "Before",
       after: "After",
+      target: "Target",
       dataNote: "Tecnotrip data is shown anonymised or as percentage change.",
       learningsAndNext: "Learnings and next steps",
       learnings: "Learnings",

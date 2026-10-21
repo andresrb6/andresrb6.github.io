@@ -13,20 +13,10 @@
   --cream: #f4e9e1;           /* Bone Cream: canvas */
   --paper: #ffffff;           /* Paper White: superfície elevada / nav activa */
 
-  /* Colors de capítol (només com a fons, vores i barres;
-     com a text només Cobalt i Violet, que passen AA) */
+  /* Només dos colors: vermell (Ember, el de la foto) i blau (Cobalt).
+     Ember no s'usa mai com a color de text (no arriba a AA): hi va tinta a sobre. */
   --ember: #ff3d00;
   --cobalt: #2835f8;
-  --violet: #5900cc;
-  --forest: #008163;
-  --crimson: #ff003d;
-
-  /* Tints de secció */
-  --blush: #e4d0cd;
-  --sky: #cddae4;
-  --celadon: #ddded3;
-  --sage: #cee4cd;
-  --sand: #e7e4d0;
 
   /* Tipografia: 3 famílies */
   --f-ui: "General Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -65,12 +55,12 @@
   --ease: cubic-bezier(.4, 0, .2, 1);
 }
 
-/* Tema de cada capítol: color, text sobre el color i tint de fons */
-.sec-about    { --sec: var(--ember);   --on-sec: var(--ink);   --tint: var(--blush); }
-.sec-xp       { --sec: var(--cobalt);  --on-sec: var(--cream); --tint: var(--sky); }
-.sec-projects { --sec: var(--violet);  --on-sec: var(--cream); --tint: var(--celadon); }
-.sec-skills   { --sec: var(--forest);  --on-sec: var(--paper); --tint: var(--sage); }
-.sec-contact  { --sec: var(--crimson); --on-sec: var(--ink);   --tint: var(--sand); }
+/* Tema de cada capítol: alterna vermell i blau sobre el fons crema */
+.sec-about    { --sec: var(--ember);  --on-sec: var(--ink); }
+.sec-xp       { --sec: var(--cobalt); --on-sec: var(--cream); }
+.sec-projects { --sec: var(--ember);  --on-sec: var(--ink); }
+.sec-skills   { --sec: var(--cobalt); --on-sec: var(--cream); }
+.sec-contact  { --sec: var(--ember);  --on-sec: var(--ink); }
 
 /* ---------- 2. BASE ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -106,7 +96,7 @@ a:hover { text-decoration-thickness: 2px; text-decoration-color: var(--sec, var(
 /* Display (Clash Display, mai per sota de 44px) */
 .display, .hero-title, .section-head h2, .case-title, .case-section h2, .contact-card h2 {
   font-family: var(--f-display); font-weight: 600; line-height: 1; letter-spacing: -0.03em;
-  overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto;
+  overflow-wrap: normal; word-break: normal; hyphens: manual; -webkit-hyphens: manual; text-wrap: balance;
 }
 
 /* ---------- 3. COMPONENTS ---------- */
@@ -249,7 +239,8 @@ a:hover { text-decoration-thickness: 2px; text-decoration-color: var(--sec, var(
 
 /* ---------- 6. SECCIONS ---------- */
 .section { padding-block: var(--s-64) var(--s-80); overflow-x: clip; }
-.section-tint { background: var(--tint); }
+.section-tint { background: transparent; }
+.section + .section { border-top: 1.5px solid var(--ink); }
 .section-head { margin-bottom: var(--s-48); }
 .section-head h2 { font-size: var(--t-section); }
 .section-intro { max-width: 640px; margin: var(--s-24) 0 0; font-size: var(--t-lead); }
@@ -307,10 +298,10 @@ a:hover { text-decoration-thickness: 2px; text-decoration-color: var(--sec, var(
 .projects { display: grid; gap: 16px; }
 @media (min-width: 760px) { .projects { grid-template-columns: 1fr 1fr; } }
 .project-card { display: flex; flex-direction: column; gap: 20px; padding: clamp(20px, 3vw, 32px); border-radius: var(--r); background: var(--paper); color: var(--ink); }
-.project-card:nth-child(4n+1) { background: var(--violet); color: var(--cream); }
+.project-card:nth-child(4n+1) { background: var(--cobalt); color: var(--cream); }
 .project-card:nth-child(4n+2) { background: var(--ink); color: var(--cream); }
 .project-card:nth-child(4n+3) { background: var(--paper); color: var(--ink); }
-.project-card:nth-child(4n+4) { background: var(--cream); color: var(--ink); border: 1.5px solid var(--violet); }
+.project-card:nth-child(4n+4) { background: var(--ember); color: var(--ink); }
 .case-card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .case-card-icon { display: none; }
 .project-card h3 { font-size: var(--t-h); line-height: 1.12; letter-spacing: -0.02em; }
@@ -322,6 +313,10 @@ a:hover { text-decoration-thickness: 2px; text-decoration-color: var(--sec, var(
 }
 .project-link:hover { border-width: 3px; padding: 10.5px 18.5px; text-decoration: none; }
 .project-link svg { display: none; }
+.card-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 16px 12px; padding-top: 16px; border-top: 1.5px solid currentColor; }
+.card-kpi-value { display: block; font-family: var(--f-display); font-weight: 600; font-size: clamp(30px, 3.2vw, 52px); line-height: 1; letter-spacing: -0.03em; white-space: nowrap; }
+.card-kpi-value .val-pending, .card-kpi-value .val-measuring { font-family: var(--f-mono); font-size: var(--t-sm); font-weight: 400; letter-spacing: -0.04em; }
+.card-kpi-label { display: block; margin-top: 6px; font-family: var(--f-mono); font-size: var(--t-caption); letter-spacing: -0.03em; text-transform: uppercase; }
 .case-soon { margin-top: auto; font-family: var(--f-mono); font-size: var(--t-sm); letter-spacing: -0.04em; }
 .projects-empty { padding: 24px; border-radius: var(--r); background: var(--paper); }
 
@@ -358,7 +353,7 @@ a:hover { text-decoration-thickness: 2px; text-decoration-color: var(--sec, var(
 
 .noscript { position: fixed; inset: auto 0 0 0; margin: 0; padding: 12px; background: var(--ink); color: var(--cream); z-index: 300; }
 
-/* ---------- 7. PÀGINA DE CAS (capítol 03, violeta) ---------- */
+/* ---------- 7. PÀGINA DE CAS ---------- */
 .case-page .hero-bg { display: none; }
 .case-hero { padding: 24px 0 var(--s-64); overflow-x: clip; }
 .breadcrumb ol { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-bottom: var(--s-32); font-family: var(--f-mono); font-size: var(--t-sm); letter-spacing: -0.04em; }
@@ -370,14 +365,15 @@ a:hover { text-decoration-thickness: 2px; text-decoration-color: var(--sec, var(
 .phases { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--s-32); }
 .phase { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 6px; border: 1.5px solid var(--ink); border-radius: var(--r-pill); }
 .phase-dot { display: grid; place-items: center; min-width: 26px; height: 26px; border-radius: var(--r-pill); font-family: var(--f-mono); font-size: var(--t-caption); }
-.phase--done { background: var(--violet); color: var(--cream); border-color: var(--violet); }
+.phase--done { background: var(--cobalt); color: var(--cream); border-color: var(--cobalt); }
 .phase--done .phase-dot { background: var(--cream); color: var(--ink); }
 .case-meta { display: grid; gap: 16px; padding: 24px; border-radius: var(--r); background: var(--paper); }
 .case-meta dt { font-family: var(--f-mono); font-size: var(--t-caption); letter-spacing: -0.03em; text-transform: uppercase; margin-bottom: 4px; }
-.case-meta .chip { background: var(--violet); color: var(--cream); }
+.case-meta .chip { background: var(--cobalt); color: var(--cream); }
 @media (min-width: 900px) { .case-meta { grid-template-columns: 1fr 1fr 2fr; } }
 .case-section { padding-block: var(--s-64); overflow-x: clip; }
-.case-section--alt { background: var(--celadon); }
+.case-section--alt { background: transparent; }
+.case-section + .case-section { border-top: 1.5px solid var(--ink); }
 .case-section h2 { font-size: var(--t-section); margin-bottom: var(--s-32); }
 .case-section h3 { font-size: var(--t-h-sm); margin: var(--s-32) 0 var(--s-16); }
 .prose p { max-width: 640px; font-size: 18px; }
@@ -388,7 +384,7 @@ a:hover { text-decoration-thickness: 2px; text-decoration-color: var(--sec, var(
 .findings, .actions { display: grid; gap: 8px; }
 .findings li, .actions li { display: grid; gap: 4px; padding: 16px 20px; border-radius: var(--r); background: var(--paper); }
 .actions li { grid-template-columns: 1fr auto; align-items: baseline; gap: 12px; }
-.actions li.is-done { background: var(--violet); color: var(--cream); }
+.actions li.is-done { background: var(--cobalt); color: var(--cream); }
 .action-state { padding: 3px 10px; border: 1.5px solid currentColor; border-radius: var(--r-pill); font-family: var(--f-mono); font-size: var(--t-caption); letter-spacing: -0.03em; }
 .kpi-table-wrap { overflow-x: auto; border-radius: var(--r); background: var(--paper); }
 .kpi-table { width: 100%; min-width: 520px; border-collapse: collapse; }
@@ -401,7 +397,7 @@ a:hover { text-decoration-thickness: 2px; text-decoration-color: var(--sec, var(
 .learn-grid { display: grid; gap: 16px; }
 @media (min-width: 760px) { .learn-grid { grid-template-columns: 1fr 1fr; } }
 .learn-card { padding: 24px; border-radius: var(--r); background: var(--paper); }
-.learn-card:first-child { background: var(--violet); color: var(--cream); }
+.learn-card:first-child { background: var(--cobalt); color: var(--cream); }
 .learn-card h3 { margin: 0 0 16px; }
 .check-list { display: grid; gap: 10px; }
 .check-list li { position: relative; padding-left: 20px; }

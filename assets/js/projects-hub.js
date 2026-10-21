@@ -5,6 +5,15 @@
   var D = window.CasesData;
   var esc = D.esc;
 
+  // Xifres clau de la targeta (data/casos.json → card.kpis): grans, en display
+  function kpis(c, lang, t) {
+    var list = (c.card && c.card.kpis) || [];
+    if (!list.length) return "";
+    return '<ul class="card-kpis">' + list.slice(0, 3).map(function (k) {
+      return '<li><span class="card-kpi-value">' + D.value(k.value, lang, t) + '</span><span class="card-kpi-label">' + esc(D.tr(k.label, lang)) + "</span></li>";
+    }).join("") + "</ul>";
+  }
+
   function card(c, lang, t, tp) {
     var link = c.published
       ? '<a class="project-link" href="' + esc(D.url(c)) + '">' + esc(tp.viewCase) + '<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>'
@@ -17,8 +26,10 @@
       "<h3>" + esc(D.tr(c.title, lang)) + "</h3>" +
       '<dl class="case-card-facts">' +
         "<div><dt>" + esc(tp.problem) + "</dt><dd>" + esc(D.tr(c.card.problem, lang)) + "</dd></div>" +
+        (c.card.execution ? "<div><dt>" + esc(tp.execution || "") + "</dt><dd>" + esc(D.tr(c.card.execution, lang)) + "</dd></div>" : "") +
         "<div><dt>" + esc(tp.result) + "</dt><dd>" + D.value(c.card.result, lang, t) + "</dd></div>" +
       "</dl>" +
+      kpis(c, lang, t) +
       link +
     "</article>";
   }
