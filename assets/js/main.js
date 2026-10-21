@@ -178,8 +178,7 @@
       drawer.setAttribute("aria-hidden", "false");
       toggle.setAttribute("aria-expanded", "true");
       document.body.classList.add("no-scroll");
-      var f = focusables();
-      if (f.length) f[0].focus();
+      setTimeout(function () { var f = focusables(); if (f.length) f[0].focus(); }, 50);
     }
 
     function close(returnFocus) {
@@ -221,8 +220,18 @@
 
   function initScrollUi() {
     var header = $(".site-header");
-    var onScroll = function () { header.classList.toggle("is-scrolled", window.scrollY > 8); };
-    window.addEventListener("scroll", onScroll, { passive: true });
+    var bar = $(".progress-bar");
+    var ticking = false;
+    var onScroll = function () {
+      ticking = false;
+      if (header) header.classList.toggle("is-scrolled", window.scrollY > 8);
+      if (bar) {
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.setProperty("--p", max > 0 ? Math.min(1, window.scrollY / max).toFixed(4) : 0);
+      }
+    };
+    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+    window.addEventListener("resize", onScroll);
     onScroll();
 
     if (!("IntersectionObserver" in window)) {
@@ -231,11 +240,15 @@
     }
 
     // Solo enlaces internos de esta página (en las páginas de caso apuntan a ../#...)
-    var links = $$(".nav-desktop a, .drawer-nav a").filter(function (a) { return a.getAttribute("href").charAt(0) === "#"; });
+    var links = $$(".navcard").filter(function (a) { return a.getAttribute("href").charAt(0) === "#"; });
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
         var id = "#" + entry.target.id;
+        // Comptador de secció (00 = inici)
+        var count = $("#sec-count");
+        var order = ["#about", "#experience", "#portfolio", "#skills", "#contact"];
+        if (count) count.textContent = "0" + (order.indexOf(id) + 1);
         links.forEach(function (a) {
           var on = a.getAttribute("href") === id;
           a.classList.toggle("is-active", on);
